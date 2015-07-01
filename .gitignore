@@ -1,0 +1,4 @@
+pom.xml
+**/core-examples/pom.xml
+**/core-examples/README.adoc
+**/core-examples/src
