@@ -1,0 +1,60 @@
+{
+  "name": "http",
+
+  "tags": ["http", "https", "simple", "ssl", "core"],
+
+  "executions": {
+
+    "java-http" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/simple",
+      "command" : "vertx run io.vertx.example.core.http.simple.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.core.http.simple.Client  -cp ${base}/target/classes:."
+    },
+
+    "java-https" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/https",
+      "command" : "vertx run io.vertx.example.core.http.https.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.core.http.https.Client  -cp ${base}/target/classes:."
+    },
+
+    "js-https" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/https",
+      "command" : "vertx run server.js -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.js"
+    },
+
+    "js-http" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/simple",
+      "command" : "vertx run server.js -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.js"
+    },
+
+    "groovy-https": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/http/https",
+      "command" : "vertx run server.groovy -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.groovy"
+    },
+
+    "groovy-http": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/http/simple",
+      "command" : "vertx run server.groovy -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.groovy"
+    },
+
+    "ruby-https": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/http/https",
+      "command" : "vertx run server.rb -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.rb"
+    },
+
+    "ruby-http": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/http/simple",
+      "command" : "vertx run server.rb -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.rb"
+    }
+  },
+
+  "post-check": "core-http-check.groovy",
+  "grace-text": "Succeeded in deploying verticle",
+  "client-execute-until" : "Got data"
+}

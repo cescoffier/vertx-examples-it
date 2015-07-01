@@ -1,0 +1,31 @@
+{
+  "name": "http-file",
+
+  "tags": ["http", "file", "core"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/sendfile",
+      "command" : "vertx run io.vertx.example.core.http.sendfile.SendFile -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/sendfile",
+      "command" : "vertx run send_file.js -cp ${base}/target/classes:."
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/http/sendfile",
+      "command" : "vertx run send_file.groovy -cp ${base}/target/classes:."
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/http/sendfile",
+      "command" : "vertx run send_file.rb -cp ${base}/target/classes:."
+    }
+  },
+
+  "client-check": "core-http-file-check.groovy",
+  "grace-text": "Succeeded in deploying verticle"
+}

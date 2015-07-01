@@ -25,6 +25,14 @@
       <version>${vertx.version}</version>
       <classifier>full</classifier>
       <type>zip</type>
+      <scope>provided</scope>
+      <exclusions>
+        <!-- Explicitely exclude groovy to avoid the conflict with the script execution -->
+        <exclusion>
+          <groupId>org.codehaus.groovy</groupId>
+          <artifactId>groovy-all</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
 
