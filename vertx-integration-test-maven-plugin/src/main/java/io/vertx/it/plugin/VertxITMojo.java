@@ -86,7 +86,6 @@ public class VertxITMojo extends AbstractMojo {
 
   @Override
   public void execute() throws MojoExecutionException, MojoFailureException {
-
     if (exec != null && tag != null) {
       throw new MojoExecutionException("Cannot use the `tag` and `exec` parameter together");
     }
@@ -104,7 +103,7 @@ public class VertxITMojo extends AbstractMojo {
 
     File vertx;
     File java;
-    if (! OS.isFamilyWindows()) {
+    if (!OS.isFamilyWindows()) {
       vertx = new File(vertxHome, "bin/vertx");
       java = new File(javaHome, "bin/java");
     } else {

@@ -13,7 +13,21 @@
   <artifactId>vertx-examples-it</artifactId>
   <version>3.1.0-SNAPSHOT</version>
 
+  <properties>
+    <vertx.version>3.0.0</vertx.version>
+    <vertx.examples.branch>master</vertx.examples.branch>
+  </properties>
+
   <dependencies>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-stack-dist</artifactId>
+      <version>${vertx.version}</version>
+      <classifier>full</classifier>
+      <type>zip</type>
+    </dependency>
+
+
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
@@ -40,7 +54,7 @@
             </goals>
             <phase>process-sources</phase>
             <configuration>
-              <url>https://github.com/vert-x3/vertx-examples/archive/master.zip</url>
+              <url>https://github.com/vert-x3/vertx-examples/archive/${vertx.examples.branch}.zip</url>
               <prefix>vertx-examples-master</prefix>
               <includes>
                 <include>**/core-examples/**/*</include>
@@ -58,12 +72,31 @@
             </goals>
             <phase>integration-test</phase>
             <configuration>
+              <vertxHome>${project.build.directory}/vert.x-${vertx.version}</vertxHome>
               <inputDirectory>${project.basedir}/src/it</inputDirectory>
               <outputDirectory>${project.build.directory}/it</outputDirectory>
               <additionalProperties>
                 <base>${project.build.directory}/it/core-examples</base>
                 <dependencies>${project.build.directory}/dependencies</dependencies>
               </additionalProperties>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>unpack-vertx-stack</id>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <includeArtifactIds>vertx-stack-dist</includeArtifactIds>
+              <outputDirectory>${project.build.directory}</outputDirectory>
             </configuration>
           </execution>
         </executions>
