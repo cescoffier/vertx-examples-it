@@ -199,8 +199,8 @@ public class Execution {
   }
 
   private int getGracePeriod() {
-    if (node.get("grace_period") != null) {
-      return node.get("grace_period").asInt();
+    if (node.get("grace-period") != null) {
+      return node.get("grace-period").asInt();
     } else {
       return run.getGracePeriod();
     }
@@ -229,8 +229,8 @@ public class Execution {
           }
       );
     } else {
-      if (node.get("execution_time") != null) {
-        TimeUtils.sleep(node.get("execution_time").asInt());
+      if (node.get("execution-time") != null) {
+        TimeUtils.sleep(node.get("execution-time").asInt());
       } else {
         run.waitExecutionTime();
       }
