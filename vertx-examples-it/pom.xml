@@ -63,9 +63,11 @@
             <phase>process-sources</phase>
             <configuration>
               <url>https://github.com/vert-x3/vertx-examples/archive/${vertx.examples.branch}.zip</url>
-              <prefix>vertx-examples-master</prefix>
+              <prefix>vertx-examples-${vertx.examples.branch}</prefix>
               <includes>
                 <include>**/core-examples/**/*</include>
+                <include>vertx-examples-${vertx.examples.branch}/pom.xml</include>
+                <include>**/examples-utils/**/*</include>
               </includes>
               <excludes>
                 <exclude>**/README.adoc</exclude>
@@ -111,9 +113,42 @@
       </plugin>
 
       <plugin>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.5.2</version>
+        <executions>
+          <execution>
+            <id>install-examples-parent</id>
+            <phase>package</phase>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <configuration>
+              <file>${project.build.directory}/tmp/unzip/vertx-examples-${vertx.examples.branch}/pom.xml</file>
+              <pomFile>${project.build.directory}/tmp/unzip/vertx-examples-${vertx.examples.branch}/pom.xml</pomFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
         <version>1.10</version>
         <executions>
+          <execution>
+            <id>build-examples-utils</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <invokerTest>examples-utils</invokerTest>
+              <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+              </goals>
+            </configuration>
+          </execution>
+
           <execution>
             <id>build-examples</id>
             <goals>
@@ -122,6 +157,7 @@
             <phase>package</phase>
             <configuration>
               <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <invokerTest>core-examples</invokerTest>
               <goals>
                 <goal>clean</goal>
                 <goal>package</goal>

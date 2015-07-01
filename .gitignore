@@ -1,6 +1,7 @@
 **/core-examples/pom.xml
 **/core-examples/README.adoc
 **/core-examples/src
+**/examples-utils
 **/src/it/pom.xml
 target/
 pom.xml.tag
