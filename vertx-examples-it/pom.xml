@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.vertx</groupId>
+    <artifactId>integration-tests</artifactId>
+    <version>3.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>vertx-examples-it</artifactId>
+  <version>3.1.0-SNAPSHOT</version>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>http-builder</artifactId>
+      <groupId>org.codehaus.groovy.modules.http-builder</groupId>
+      <version>0.7.1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.vertx</groupId>
+        <artifactId>vertx-integration-test-maven-plugin</artifactId>
+        <version>3.1.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <id>clone-vertx-examples</id>
+            <goals>
+              <goal>clone</goal>
+            </goals>
+            <phase>process-sources</phase>
+            <configuration>
+              <url>https://github.com/vert-x3/vertx-examples/archive/master.zip</url>
+              <prefix>vertx-examples-master</prefix>
+              <includes>
+                <include>**/core-examples/**/*</include>
+              </includes>
+              <excludes>
+                <exclude>**/README.adoc</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>run-it</id>
+            <goals>
+              <goal>run-it</goal>
+            </goals>
+            <phase>integration-test</phase>
+            <configuration>
+              <inputDirectory>${project.basedir}/src/it</inputDirectory>
+              <outputDirectory>${project.build.directory}/it</outputDirectory>
+              <additionalProperties>
+                <base>${project.build.directory}/it/core-examples</base>
+                <dependencies>${project.build.directory}/dependencies</dependencies>
+              </additionalProperties>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-invoker-plugin</artifactId>
+        <version>1.10</version>
+        <executions>
+          <execution>
+            <id>build-examples</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>org.apache.maven.plugins:maven-dependency-plugin:copy-dependencies</goal>
+              </goals>
+              <properties>
+                <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+              </properties>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,15 @@
+{
+  "name": "embed",
+
+  "tags": ["embedded", "core"],
+
+  "executions": {
+    "java" : {
+      "directory" : "${base}/target/classes",
+      "command" : "java -cp ${dependencies}/*:. io.vertx.example.core.embed.EmbeddedServer"
+    }
+  },
+
+  "client-check": "core-embed-check.groovy",
+  "grace-period": 5000
+}

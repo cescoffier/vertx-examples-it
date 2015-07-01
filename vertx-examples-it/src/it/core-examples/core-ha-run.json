@@ -1,0 +1,37 @@
+{
+  "name": "ha",
+
+  "cluster": true,
+  "tags": ["ha", "core"],
+  "executions": {
+    "java" : {
+      "directory" : "${base}/target/classes",
+      "command" : "vertx run io.vertx.example.core.ha.Server -ha -cluster-host ${interface}"
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/ha",
+      "command" : "vertx run server.js -cp ${base}/target/classes:.  -ha -cluster-host ${interface}"
+    },
+
+    "groovy": {
+      "directory" :  "${base}/src/main/groovy/io/vertx/example/core/ha",
+      "command" : "vertx run server.groovy -cp ${base}/target/classes:.  -ha -cluster-host ${interface}"
+    },
+
+    "ruby": {
+      "directory" :  "${base}/src/main/rb/io/vertx/example/core/ha",
+      "command" : "vertx run server.rb -cp ${base}/target/classes:. -ha -cluster-host ${interface}"
+    },
+
+    "bare" : {
+      "directory" : "${base}/target/classes",
+      "command" : "vertx -ha -cluster-host ${interface}",
+      "grace-text" : "A quorum has been obtained.",
+      "client-check": "core-ha-bare-check.groovy"
+    }
+  },
+
+  "client-check": "core-ha-check.groovy",
+  "grace-text": "Succeeded in deploying verticle"
+}

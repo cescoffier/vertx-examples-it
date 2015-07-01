@@ -1,0 +1,29 @@
+{
+  "name": "exec-blocking",
+
+  "tags": ["blocking", "core"],
+  "executions": {
+    "java" : {
+      "directory" : "${base}/target/classes",
+      "command" : "vertx run io.vertx.example.core.execblocking.ExecBlockingExample"
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/execblocking",
+      "command" : "vertx run exec_blocking_example.js -cp ${base}/target/classes:."
+    },
+
+    "groovy": {
+      "directory" :  "${base}/src/main/groovy/io/vertx/example/core/execblocking",
+      "command" : "vertx run exec_blocking_example.groovy -cp ${base}/target/classes:."
+    },
+
+    "ruby": {
+      "directory" :  "${base}/src/main/rb/io/vertx/example/core/execblocking",
+      "command" : "vertx run exec_blocking_example.rb -cp ${base}/target/classes:."
+    }
+  },
+
+  "client-check": "core-blocking-check.groovy",
+  "grace-text": "Succeeded in deploying verticle"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "net-echo-ssl",
+
+  "tags": ["net", "ssl", "echo", "core"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/net/echossl",
+      "command" : "vertx run io.vertx.example.core.net.echossl.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.core.net.echossl.Client  -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/net/echossl",
+      "command" : "vertx run server.js -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.js"
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/net/echossl",
+      "command" : "vertx run server.groovy -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.groovy"
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/net/echossl",
+      "command" : "vertx run server.rb -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.rb"
+    }
+  },
+
+  "post-check": "core-net-echo-check.groovy",
+  "grace-text": "Succeeded in deploying verticle",
+  "client-execute-until" : "client receiving"
+}

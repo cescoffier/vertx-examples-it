@@ -1,0 +1,31 @@
+{
+  "name": "worker",
+
+  "tags": ["worker", "core"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/target/classes",
+      "command" : "vertx run io.vertx.example.core.verticle.worker.MainVerticle"
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/verticle/worker",
+      "command" : "vertx run main_verticle.js -cp ${base}/target/classes:."
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/verticle/worker",
+      "command" : "vertx run main_verticle.groovy -cp ${base}/target/classes:."
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/verticle/worker",
+      "command" : "vertx run main_verticle.rb -cp ${base}/target/classes:."
+    }
+  },
+
+  "post-check": "core-worker-check.groovy",
+  "grace-text": "[Main] Receiving reply ' HELLO VERT.X'"
+}

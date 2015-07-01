@@ -1,0 +1,31 @@
+{
+  "name": "asyncstart",
+
+  "tags": ["asyncstart", "core"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/target/classes",
+      "command" : "vertx run io.vertx.example.core.verticle.asyncstart.DeployExample"
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/verticle/asyncstart",
+      "command" : "vertx run deploy_example.js -cp ${base}/target/classes:."
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/verticle/asyncstart",
+      "command" : "vertx run deploy_example.groovy -cp ${base}/target/classes:."
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/verticle/asyncstart",
+      "command" : "vertx run deploy_example.rb -cp ${base}/target/classes:."
+    }
+  },
+
+  "post-check": "core-asyncstart-check.groovy",
+  "grace-text" : "Undeployed ok!"
+}
