@@ -1,0 +1,36 @@
+{
+  "name": "http-upload",
+
+  "tags": ["http", "upload", "core"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/upload",
+      "command" : "vertx run io.vertx.example.core.http.upload.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.core.http.upload.Client  -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/upload",
+      "command" : "vertx run server.js -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.js"
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/http/upload",
+      "command" : "vertx run server.groovy -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.groovy"
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/http/upload",
+      "command" : "vertx run server.rb -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.rb"
+    }
+  },
+
+  "post-check": "core-http-upload-check.groovy",
+  "grace-text": "Succeeded in deploying verticle",
+  "client-execute-until" : "Response"
+}
