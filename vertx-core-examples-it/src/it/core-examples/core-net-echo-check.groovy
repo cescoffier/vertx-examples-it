@@ -2,8 +2,8 @@ import static org.assertj.core.api.Assertions.*;
 
 helper.ensureSucceededInDeployingVerticle()
 helper.ensureClientSucceededInDeployingVerticle()
-helper.ensureTextNotContainedInErrorStream("Exception")
-helper.ensureTextNotContainedInClientErrorStream("Exception")
+helper.ensureTextNotContainedInErrorStream("Unhandled Exception")
+helper.ensureTextNotContainedInClientErrorStream("Unhandled Exception")
 
 helper.ensureTextInOutputStream("Echo server is now listening")
 

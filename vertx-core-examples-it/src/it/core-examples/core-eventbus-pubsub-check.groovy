@@ -1,6 +1,6 @@
 helper.ensureSucceededInDeployingVerticle()
 helper.ensureClientSucceededInDeployingVerticle()
-helper.ensureTextNotContainedInErrorStream("Exception")
-helper.ensureTextNotContainedInClientErrorStream("Exception")
+helper.ensureTextNotContainedInErrorStream("Unhandled Exception")
+helper.ensureTextNotContainedInClientErrorStream("Unhandled Exception")
 
 helper.ensureTextInClientOutputStream("news")

@@ -1,0 +1,60 @@
+{
+  "name": "http-form",
+
+  "tags": ["http", "form", "core"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/core/http/simpleform",
+      "command" : "vertx run io.vertx.example.core.http.simpleform.SimpleFormServer -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-check.groovy"
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/simpleform",
+      "command" : "vertx run simple_form_server.js -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-check.groovy"
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/http/simpleform",
+      "command" : "vertx run simple_form_server.groovy -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-check.groovy"
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/http/simpleform",
+      "command" : "vertx run simple_form_server.rb -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-check.groovy"
+    },
+
+    "java-upload" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/core/http/simpleformupload",
+      "command" : "vertx run io.vertx.example.core.http.simpleformupload.SimpleFormUploadServer -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-upload-check.groovy"
+    },
+
+    "js-upload" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/http/simpleformupload",
+      "command" : "vertx run simple_form_upload_server.js -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-upload-check.groovy"
+    },
+
+    "rb-upload" : {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/http/simpleformupload",
+      "command" : "vertx run simple_form_upload_server.rb -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-upload-check.groovy"
+    },
+
+    "groovy-upload" : {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/http/simpleformupload",
+      "command" : "vertx run simple_form_upload_server.groovy -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-upload-check.groovy"
+    }
+
+
+  },
+
+  "grace-text": "Succeeded in deploying verticle"
+}

@@ -10,10 +10,54 @@
 
   <packaging>pom</packaging>
 
+  <properties>
+    <vertx.version>3.0.0</vertx.version>
+    <vertx.examples.branch>master</vertx.examples.branch>
+  </properties>
+
   <modules>
     <module>vertx-integration-test-maven-plugin</module>
-    <module>vertx-examples-it</module>
+    <module>vertx-core-examples-it</module>
   </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-stack-dist</artifactId>
+      <version>${vertx.version}</version>
+      <classifier>full</classifier>
+      <type>zip</type>
+      <scope>provided</scope>
+      <exclusions>
+        <!-- Explicitely exclude groovy to avoid the conflict with the script execution -->
+        <exclusion>
+          <groupId>org.codehaus.groovy</groupId>
+          <artifactId>groovy-all</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>http-builder</artifactId>
+      <groupId>org.codehaus.groovy.modules.http-builder</groupId>
+      <version>0.7.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpmime</artifactId>
+      <version>4.3.6</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>

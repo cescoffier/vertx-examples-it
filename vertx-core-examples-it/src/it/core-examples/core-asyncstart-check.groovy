@@ -1,5 +1,5 @@
 helper.ensureSucceededInDeployingVerticle()
-helper.ensureTextNotContainedInErrorStream("Exception")
+helper.ensureTextNotContainedInErrorStream("Unhandled Exception")
 
 helper.ensureTextInOutputStream("Main verticle has started, let's deploy some others...")
 helper.ensureTextInOutputStream("In OtherVerticle.start (async)")
