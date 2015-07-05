@@ -16,7 +16,7 @@ public class TimeUtils {
     }
   }
 
-  private static int getTimeFactor() {
+  public static int getTimeFactor() {
     return Integer.getInteger("time.factor", 1);
   }
 
