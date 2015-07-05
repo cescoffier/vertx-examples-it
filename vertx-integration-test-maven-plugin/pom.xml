@@ -92,6 +92,12 @@
       <artifactId>awaitility</artifactId>
       <version>1.6.3</version>
     </dependency>
+
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>4.1.0</version>
+    </dependency>
   </dependencies>
 
   <build>

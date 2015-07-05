@@ -1,5 +1,6 @@
 package io.vertx.it.plugin;
 
+import org.apache.commons.exec.OS;
 import org.apache.commons.exec.ProcessDestroyer;
 
 import java.util.ArrayList;
@@ -19,10 +20,24 @@ class Destroyer implements ProcessDestroyer {
   }
 
   public void killThemAll() {
-    for (Process p : processes) {
-      p.destroyForcibly();
+    System.out.println(processes.size() + " processes need to be destroyed");
+    List<Process> copy = new ArrayList<>(processes);
+    for (Process p : copy) {
+      if (OS.isFamilyWindows()) {
+        // Well windows...
+        // Destroying the process won't kill children process,
+        // so we need another dirty way
+        killWindowsProcessAndChildren(p);
+      } else {
+        p.destroyForcibly();
+      }
+      processes.remove(p);
+      System.out.println("Process destroyed");
     }
-    processes.clear();
+  }
+
+  private void killWindowsProcessAndChildren(Process p) {
+    WindowsDestroyer.destroy(p);
   }
 
   /**
