@@ -27,7 +27,6 @@ public class Run {
   private List<Execution> executions = new ArrayList<>();
 
   private long totalExecutionTime;
-  private String waitUntil;
 
   public Run(File json, Log log, File vertx, File reportDirectory, String itf) throws IOException {
     file = json;
@@ -63,9 +62,12 @@ public class Run {
         try {
           execution.execute();
           execution.markAsSuccess();
+          System.err.println("\t" + execution.getFullName() + " succeeded");
         } catch (RunFailureException e) {
+          System.err.println("\t" + execution.getFullName() + " has failed - " + e.getMessage());
           execution.markAsFailed(e);
         } catch (Throwable e) {
+          System.err.println("\t" + execution.getFullName() + " is in error - " + e.getMessage());
           execution.markAsError(e);
         } finally {
           execution.cleanup();
