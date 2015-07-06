@@ -1,4 +1,4 @@
-package io.vertx.it.plugin;
+package io.vertx.it.plugin.win;
 
 import com.sun.jna.Library;
 import com.sun.jna.Native;

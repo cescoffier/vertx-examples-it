@@ -1,5 +1,6 @@
 package io.vertx.it.plugin;
 
+import io.vertx.it.plugin.win.WindowsDestroyer;
 import org.apache.commons.exec.OS;
 import org.apache.commons.exec.ProcessDestroyer;
 

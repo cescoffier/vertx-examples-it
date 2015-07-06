@@ -1,4 +1,4 @@
-package io.vertx.it.plugin;
+package io.vertx.it.plugin.win;
 
 import java.lang.reflect.Field;
 
