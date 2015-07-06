@@ -54,29 +54,24 @@ public class Run {
   }
 
 
-  public void execute(String exec) throws IOException {
-    // Execution
-    for (Execution execution : executions) {
-      if (exec == null  || ! exec.contains("#") || execution.getFullName().equalsIgnoreCase(exec)) {
-        long begin = System.currentTimeMillis();
-        try {
-          execution.execute();
-          execution.markAsSuccess();
-          System.err.println("\t" + execution.getFullName() + " succeeded");
-        } catch (RunFailureException e) {
-          System.err.println("\t" + execution.getFullName() + " has failed - " + e.getMessage());
-          execution.markAsFailed(e);
-        } catch (Throwable e) {
-          System.err.println("\t" + execution.getFullName() + " is in error - " + e.getMessage());
-          execution.markAsError(e);
-        } finally {
-          execution.cleanup();
-          long end = System.currentTimeMillis();
-          execution.setExecutionTime(end - begin);
-          totalExecutionTime += (end - begin);
-          execution.dumpReport(reportDirectory);
-        }
-      }
+  public void execute(Execution execution) throws IOException {
+    long begin = System.currentTimeMillis();
+    try {
+      execution.execute();
+      execution.markAsSuccess();
+      System.err.println("\t" + execution.getFullName() + " succeeded");
+    } catch (RunFailureException e) {
+      System.err.println("\t" + execution.getFullName() + " has failed - " + e.getMessage());
+      execution.markAsFailed(e);
+    } catch (Throwable e) {
+      System.err.println("\t" + execution.getFullName() + " is in error - " + e.getMessage());
+      execution.markAsError(e);
+    } finally {
+      execution.cleanup();
+      long end = System.currentTimeMillis();
+      execution.setExecutionTime(end - begin);
+      totalExecutionTime += (end - begin);
+      execution.dumpReport(reportDirectory);
     }
   }
 
@@ -127,19 +122,6 @@ public class Run {
     for (final JsonNode v : node.get("tags")) {
       if (tag.equalsIgnoreCase(v.asText())) {
         return true;
-      }
-    }
-    return false;
-  }
-
-  public boolean matches(String exec) {
-    if (!exec.contains("#")) {
-      return name().equalsIgnoreCase(exec);
-    } else {
-      for (Execution e : executions) {
-        if (e.getFullName().equalsIgnoreCase(exec)) {
-          return true;
-        }
       }
     }
     return false;

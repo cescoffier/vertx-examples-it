@@ -60,6 +60,11 @@ public class VertxITMojo extends AbstractMojo {
   @Parameter(defaultValue = "${exec}")
   public String exec;
 
+  @Parameter(defaultValue = "${exec.includes}")
+  public String includes;
+
+  @Parameter(defaultValue = "${exec.excludes}")
+  public String excludes;
 
   @Parameter(defaultValue = "${interface}")
   public String itf;
@@ -82,12 +87,30 @@ public class VertxITMojo extends AbstractMojo {
   @Parameter(defaultValue = "${java.home}", required = true, readonly = true)
   public File javaHome;
 
-  private List<Run> runs = new ArrayList<>();
+  private Set<Run> runs = new LinkedHashSet<>();
+  private ExecutionSelector selector;
 
   @Override
   public void execute() throws MojoExecutionException, MojoFailureException {
     if (exec != null && tag != null) {
-      throw new MojoExecutionException("Cannot use the `tag` and `exec` parameter together");
+      throw new MojoExecutionException("Cannot use the `tag` and `exec` parameters together");
+    }
+
+    if (exec != null  && (includes != null  || excludes != null)) {
+      throw new MojoExecutionException("Cannot use the `exec` and `includes/excludes` parameters together");
+    }
+
+    // Manage selector
+    if (exec != null) {
+      if (exec.contains("#")) {
+        selector = new ExecutionSelector(exec, null, null);
+      } else {
+        selector = new ExecutionSelector(exec + "#*", null, null);
+      }
+    } else if (excludes != null  || includes != null) {
+      selector = new ExecutionSelector(includes, excludes, null);
+    } else if (tag != null) {
+      selector = new ExecutionSelector(null, null, tag);
     }
 
     if (vertxHome == null) {
@@ -150,14 +173,12 @@ public class VertxITMojo extends AbstractMojo {
     for (File f : files) {
       try {
         Run run = new Run(f, getLog(), vertx, new File(buildDirectory, "it-reports"), itf);
-
-        if ((tag == null && exec == null)
-            || tag != null && run.hasTag(tag)
-            || exec != null && run.matches(exec)) {
-          runs.add(run);
-          run.execute(exec);
+        for (Execution execution : run.executions()) {
+          if (selector.accept(run, execution)) {
+            runs.add(run);
+            run.execute(execution);
+          }
         }
-
       } catch (IOException e) {
         getLog().error("Failed to execute " + f.getAbsolutePath(), e);
         throw new MojoExecutionException("Execution failure", e);
