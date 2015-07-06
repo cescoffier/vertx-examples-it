@@ -12,6 +12,10 @@
 
   <artifactId>vertx-core-examples-it</artifactId>
 
+  <properties>
+    <fastbuild>false</fastbuild>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
@@ -36,6 +40,7 @@
               <excludes>
                 <exclude>**/README.adoc</exclude>
               </excludes>
+              <skip>${fastbuild}</skip>
             </configuration>
           </execution>
 
@@ -71,6 +76,7 @@
             <configuration>
               <includeArtifactIds>vertx-stack-dist</includeArtifactIds>
               <outputDirectory>${project.build.directory}</outputDirectory>
+              <skip>${fastbuild}</skip>
             </configuration>
           </execution>
         </executions>
@@ -111,6 +117,7 @@
                 <goal>clean</goal>
                 <goal>install</goal>
               </goals>
+              <skipInvocation>${fastbuild}</skipInvocation>
             </configuration>
           </execution>
 
@@ -131,6 +138,7 @@
               <properties>
                 <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
               </properties>
+              <skipInvocation>${fastbuild}</skipInvocation>
             </configuration>
           </execution>
         </executions>
