@@ -101,6 +101,7 @@ public class VertxITMojo extends AbstractMojo {
     }
 
     // Manage selector
+    selector = new ExecutionSelector(null, null, null);
     if (exec != null) {
       if (exec.contains("#")) {
         selector = new ExecutionSelector(exec, null, null);
@@ -205,9 +206,23 @@ public class VertxITMojo extends AbstractMojo {
     getLog().info("Number of executions in error: " + getNumberOfExecutionInError());
     getLog().info("--------------------------------------");
 
+    try {
+      Reporter.createGlobalReports(getAllExecutions(), new File(buildDirectory, "it-reports"));
+    } catch (IOException e) {
+      throw new MojoExecutionException("Cannot create global report", e);
+    }
+
     if (getNumberOfFailedExecution() > 0 || getNumberOfExecutionInError() > 0) {
       throw new MojoFailureException("Some executions has failed or are in error");
     }
+  }
+
+  private List<Execution> getAllExecutions() {
+    List<Execution> executions = new ArrayList<>();
+    for (Run run : runs) {
+      executions.addAll(run.executions());
+    }
+    return executions;
   }
 
   private int getNumberOfExecutions() {

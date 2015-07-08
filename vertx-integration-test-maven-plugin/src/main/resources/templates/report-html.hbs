@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Vert.X Examples Integration-Test Report</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<h2>Vert.X Examples Integration-Test Report</h2>
+
+<ul>
+    <li><strong>Date</strong>: {{date}}</li>
+    <li><strong>Status</strong>: {{status}}</li>
+</ul>
+
+<h3>Summary</h3>
+
+<ul>
+    <li> Execution: {{execution}}</li>
+    <li> Execution time: {{time}} ms</li>
+    <li> Number of succeeded executions: {{success}}</li>
+    <li> Number of failed executions: {{failures}}</li>
+    <li> Number of executions in error: {{errors}}</li>
+</ul>
+
+<h3>Details</h3>
+
+<table class="table table-striped">
+<thead>
+<tr>
+    <th>Execution Name</th>
+    <th>Status</th>
+    <th>Report</th>
+</tr>
+</thead>
+<tbody>
+{{#executions}}
+    <tr class="">
+        <td>{{fullName}}</td>
+        <td>{{status}}</td>
+        <td><a href="{{reportName}}.html">Report</a></td>
+    </tr>
+{{/executions}}
+</tbody>
+</table>
+
+</div>
+</body>
+</html>

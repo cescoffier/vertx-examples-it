@@ -35,7 +35,7 @@ public class Execution {
   }
 
   public void dumpReport(File reportDirectory) throws IOException {
-    Reporter.createReportForExecution(this, reportDirectory);
+    Reporter.createReports(this, reportDirectory);
   }
 
   public String getFullName() {
@@ -44,6 +44,22 @@ public class Execution {
 
   public Throwable getReason() {
     return exception;
+  }
+
+  public boolean isSkipped() {
+    return status == Status.SKIPPED;
+  }
+
+  public boolean isSuccess() {
+    return status == Status.SUCCESS;
+  }
+
+  public boolean isFailure() {
+    return status == Status.FAILURE;
+  }
+
+  public boolean isError() {
+    return status == Status.ERROR;
   }
 
   enum Status {
@@ -376,5 +392,9 @@ public class Execution {
 
   public String getClientCommand() {
     return clientCommand;
+  }
+
+  public String getReportName() {
+    return getFullName().replace(" ", "_").replace("#", "_");
   }
 }

@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>{{run}} - {{execution}}</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<h2>{{run}} - {{execution}}</h2>
+
+<ul>
+<li>Status: {{status}}</li>
+<li>Execution time: {{time}} ms</li>
+<li>Run File: {{file}}</li>
+</ul>
+
+<h3>Run and Execution</h3>
+
+<ul>
+<li> Run: {{run}}</li>
+<li> Execution: {{execution}}</li>
+<li> Execution time: {{time}} ms</li>
+<li> Run total time: {{totalExecutionTime}} ms</li>
+<li> Command: {{command}}</li>
+{{#if clientCommand}}<li> Client Command: {{clientCommand}}</li>{{/if}}
+</ul>
+
+<h3>Error and Failures</h3>
+
+<pre>
+    <code class="hljs">
+{{exception}}
+    </code>
+</pre>
+
+<h3>Outputs</h3>
+
+<strong>Standard Output</strong>:<br/>
+
+<pre>
+    <code class="hljs">
+{{output}}
+    </code>
+</pre>
+
+<strong>Standard Error</strong>:<br/>
+
+<pre>
+    <code class="hljs">
+{{error}}
+    </code>
+</pre>
+
+<strong>Post-Run Script</strong>:<br/>
+
+
+<pre>
+    <code class="hljs">
+{{postRun}}
+    </code>
+</pre>
+</div>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
