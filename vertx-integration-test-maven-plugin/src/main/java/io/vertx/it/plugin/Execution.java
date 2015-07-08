@@ -332,12 +332,26 @@ public class Execution {
     return status.name();
   }
 
-  public String getOutput() {
+  public String getOutputStream() {
     return main.getOutput();
   }
 
-  public String getError() {
+  public String getErrorStream() {
     return main.getError();
+  }
+
+  public String getClientOutput() {
+    if (client != null) {
+      return client.getOutput();
+    }
+    return "";
+  }
+
+  public String getClientError() {
+    if (client != null) {
+      return client.getError();
+    }
+    return "";
   }
 
   public long getTime() {
@@ -375,7 +389,15 @@ public class Execution {
     if (out.isFile()) {
       return FileUtils.readFileToString(out);
     }
-    return "no log";
+    return null;
+  }
+
+  public String getClientRun() throws IOException {
+    File out = new File(getExecutionDirectory(), "client-check.log");
+    if (out.isFile()) {
+      return FileUtils.readFileToString(out);
+    }
+    return null;
   }
 
   public String getFile() {

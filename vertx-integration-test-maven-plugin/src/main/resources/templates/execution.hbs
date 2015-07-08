@@ -26,19 +26,42 @@
 **Standard Output**:
 
 ```
-{{output}}
+{{outputStream}}
 ```
 
 **Standard Error**:
 
 ```
-{{error}}
+{{errorStream}}
 ```
 
+{{#if clientCommand}}
+**Client Output**:
+
+```
+{{clientOutput}}
+```
+
+**Client Error**:
+
+```
+{{clientError}}
+```
+{{/if}}
+
+{{#if clientRun}}
+**Client Check Script**:
+
+```
+{{clientRun}}
+```
+{{/if}}
+
+{{#if postRun}}
 **Post-Run Script**:
 
 ```
 {{postRun}}
 ```
-
+{{/if}}
 

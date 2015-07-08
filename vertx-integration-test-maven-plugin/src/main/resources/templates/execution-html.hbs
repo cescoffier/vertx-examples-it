@@ -45,7 +45,7 @@
 
 <pre>
     <code class="hljs">
-{{output}}
+{{outputStream}}
     </code>
 </pre>
 
@@ -53,19 +53,50 @@
 
 <pre>
     <code class="hljs">
-{{error}}
+{{errorStream}}
     </code>
 </pre>
 
-<strong>Post-Run Script</strong>:<br/>
+{{#if clientCommand}}
+<strong>Client Output</strong>:<br/>
 
+<pre>
+    <code class="hljs">
+{{clientOutput}}
+    </code>
+</pre>
+
+<strong>Client Error</strong>:<br/>
+
+<pre>
+    <code class="hljs">
+{{clientError}}
+    </code>
+</pre>
+{{/if}}
+
+{{#if clientRun}}
+<strong>Client Check Script</strong>:<br/>
+
+<pre>
+    <code class="hljs">
+{{clientRun}}
+    </code>
+</pre>
+{{/if}}
+
+{{#if postRun}}
+<strong>Post-Run Script</strong>:<br/>
 
 <pre>
     <code class="hljs">
 {{postRun}}
     </code>
 </pre>
+{{/if}}
+
 </div>
+
 <script>hljs.initHighlightingOnLoad();</script>
 
 </body>
