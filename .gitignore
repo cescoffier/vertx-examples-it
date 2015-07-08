@@ -1,6 +1,10 @@
-**/core-examples/pom.xml
-**/core-examples/README.adoc
-**/core-examples/src
+**/*-examples/pom.xml
+**/*-examples/README.adoc
+**/*-examples/src/main/java
+**/*-examples/src/main/groovy
+**/*-examples/src/main/js
+**/*-examples/src/main/rb
+**/*-examples/src/main/resources
 **/examples-utils
 **/src/it/pom.xml
 target/

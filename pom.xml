@@ -18,6 +18,7 @@
   <modules>
     <module>vertx-integration-test-maven-plugin</module>
     <module>vertx-core-examples-it</module>
+    <module>vertx-web-examples-it</module>
   </modules>
 
   <dependencies>
@@ -56,6 +57,21 @@
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpmime</artifactId>
       <version>4.3.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.fluentlenium</groupId>
+      <artifactId>fluentlenium-core</artifactId>
+      <version>0.10.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.fluentlenium</groupId>
+      <artifactId>fluentlenium-assertj</artifactId>
+      <version>0.10.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.detro</groupId>
+      <artifactId>phantomjsdriver</artifactId>
+      <version>1.2.0</version>
     </dependency>
   </dependencies>
 
