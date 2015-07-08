@@ -96,7 +96,7 @@ public class VertxITMojo extends AbstractMojo {
       throw new MojoExecutionException("Cannot use the `tag` and `exec` parameters together");
     }
 
-    if (exec != null  && (includes != null  || excludes != null)) {
+    if (exec != null && (includes != null || excludes != null)) {
       throw new MojoExecutionException("Cannot use the `exec` and `includes/excludes` parameters together");
     }
 
@@ -108,7 +108,7 @@ public class VertxITMojo extends AbstractMojo {
       } else {
         selector = new ExecutionSelector(exec + "#*", null, null);
       }
-    } else if (excludes != null  || includes != null) {
+    } else if (excludes != null || includes != null) {
       selector = new ExecutionSelector(includes, excludes, null);
     } else if (tag != null) {
       selector = new ExecutionSelector(null, null, tag);
@@ -116,6 +116,13 @@ public class VertxITMojo extends AbstractMojo {
 
     if (vertxHome == null) {
       throw new MojoExecutionException("vert.x home not defined");
+    }
+
+    // Publish the additional properties as system properties
+    if (additionalProperties != null) {
+      for (String n : additionalProperties.stringPropertyNames()) {
+        System.setProperty(n, additionalProperties.getProperty(n));
+      }
     }
 
     // Initialization
