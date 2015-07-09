@@ -2,6 +2,7 @@ package io.vertx.it.plugin;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.FileUtils;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.shared.scriptinterpreter.RunFailureException;
 
@@ -16,27 +17,29 @@ import java.util.List;
 public class Run {
 
   public static final ObjectMapper MAPPER = new ObjectMapper();
-
-  private final JsonNode node;
+  private final Log log;
+  private final File libs;
+  private JsonNode node;
   private final File file;
   private final File vertx;
   private final File reportDirectory;
   private final String itf;
 
-
   private List<Execution> executions = new ArrayList<>();
 
   private long totalExecutionTime;
 
-  public Run(File json, Log log, File vertx, File reportDirectory, String itf) throws IOException {
+  public Run(File json, Log log, File vertx, File reportDirectory, String itf) {
     file = json;
-    node = MAPPER.readTree(file);
     this.vertx = vertx;
     this.reportDirectory = reportDirectory;
-    if (!reportDirectory.isDirectory()) {
-      reportDirectory.mkdirs();
-    }
+    this.itf = itf;
+    this.log = log;
+    this.libs = new File(vertx.getParentFile().getParentFile(), "lib");
+  }
 
+  public void prepare() throws IOException {
+    node = MAPPER.readTree(file);
     final JsonNode exec = node.get("executions");
     if (exec == null) {
       throw new IOException("No execution defined in " + file.getAbsolutePath());
@@ -50,7 +53,32 @@ public class Run {
       String name = names.next();
       executions.add(new Execution(this, name, exec.get(name), log));
     }
-    this.itf = itf;
+
+    if (node.get("libraries") != null && node.get("libraries").isArray()) {
+      for (JsonNode t : node.get("libraries")) {
+        File file = new File(t.asText());
+        if (!file.isFile()) {
+          log.warn("Cannot copy " + file.getAbsolutePath() + " to the lib directory - the file does not exist");
+        } else {
+          log.info("Coyping " + file.getAbsolutePath() + " to " + libs.getAbsolutePath() + " - the file will be " +
+              "removed once the run has been completed");
+          FileUtils.copyFileToDirectory(file, libs);
+        }
+      }
+    }
+  }
+
+  public void cleanup() {
+    if (node.get("libraries") != null && node.get("libraries").isArray()) {
+      for (JsonNode t : node.get("libraries")) {
+        File file = new File(libs, new File(t.asText()).getName());
+        if (!file.isFile()) {
+          log.warn("Cannot delete " + file.getAbsolutePath() + " - the file does not exist");
+        } else {
+          FileUtils.deleteQuietly(file);
+        }
+      }
+    }
   }
 
 

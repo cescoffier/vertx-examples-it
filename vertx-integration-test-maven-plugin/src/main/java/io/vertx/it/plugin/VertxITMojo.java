@@ -177,20 +177,32 @@ public class VertxITMojo extends AbstractMojo {
 
     getLog().info(files.size() + " run files found");
 
+    File report = new File(buildDirectory, "it-reports");
+    if (!report.isDirectory()) {
+      report.mkdirs();
+    }
+
     // Execute them
     for (File f : files) {
+      Run run = new Run(f, getLog(), vertx, report, itf);
       try {
-        Run run = new Run(f, getLog(), vertx, new File(buildDirectory, "it-reports"), itf);
+        run.prepare();
         for (Execution execution : run.executions()) {
           if (selector.accept(run, execution)) {
             runs.add(run);
-            run.execute(execution);
+            try {
+              run.execute(execution);
+            } catch (IOException e) {
+              getLog().error("Failed to execute " + f.getAbsolutePath(), e);
+              throw new MojoExecutionException("Execution failure", e);
+            }
           }
         }
       } catch (IOException e) {
-        getLog().error("Failed to execute " + f.getAbsolutePath(), e);
+        getLog().error("Cannot initialize run " + f.getAbsolutePath(), e);
         throw new MojoExecutionException("Execution failure", e);
       }
+      run.cleanup();
     }
 
     // Report and decide whether we should fail the build
@@ -214,7 +226,7 @@ public class VertxITMojo extends AbstractMojo {
     getLog().info("--------------------------------------");
 
     try {
-      Reporter.createGlobalReports(getAllExecutions(), new File(buildDirectory, "it-reports"));
+      Reporter.createGlobalReports(getAllExecutions(), report);
     } catch (IOException e) {
       throw new MojoExecutionException("Cannot create global report", e);
     }
