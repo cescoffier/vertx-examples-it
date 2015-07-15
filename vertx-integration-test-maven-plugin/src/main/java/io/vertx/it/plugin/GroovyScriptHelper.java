@@ -1,10 +1,13 @@
 package io.vertx.it.plugin;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.apache.maven.plugin.logging.Log;
+import org.apache.commons.io.IOUtils;
 import org.apache.maven.shared.scriptinterpreter.ScriptRunner;
 
+import java.io.Closeable;
 import java.io.File;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroovyScriptHelper {
@@ -20,7 +23,7 @@ public class GroovyScriptHelper {
   public final File base;
 
   public final JsonNode json;
-  
+
   public final String client_output;
 
   public final String client_error;
@@ -29,7 +32,9 @@ public class GroovyScriptHelper {
 
   public final String error;
 
-  public static void init(List<String>classpathElements) {
+  private List<Object> closeables = new ArrayList<>();
+
+  public static void init(List<String> classpathElements) {
     classpath = classpathElements;
   }
 
@@ -40,7 +45,7 @@ public class GroovyScriptHelper {
     this.client = client;
     this.base = base;
     this.json = json;
-    
+
     if (client != null) {
       this.client_output = client.getOutput();
       this.client_error = client.getError();
@@ -48,7 +53,7 @@ public class GroovyScriptHelper {
       this.client_output = "";
       this.client_error = "";
     }
-    
+
     output = main.getOutput();
     error = main.getError();
   }
@@ -115,6 +120,36 @@ public class GroovyScriptHelper {
       throw new AssertionError("Text `" + text + "` found in the client output");
     }
     return true;
+  }
+
+  public boolean enqueueCloseable(Object o) {
+    return closeables.add(o);
+  }
+
+  public void close() {
+    for (Object o : closeables) {
+      if (o instanceof Closeable) {
+        IOUtils.closeQuietly((Closeable) o);
+      } else {
+        IOUtils.closeQuietly(() -> {
+          try {
+            Method method = o.getClass().getMethod("close");
+            method.invoke(o);
+
+            try {
+              method = o.getClass().getMethod("quit");
+              method.invoke(o);
+            } catch (NoSuchMethodException e) {
+              // Ignore it.
+            }
+          } catch (Exception e) {
+            System.err.println("Cannot close " + o);
+            e.printStackTrace();
+          }
+        });
+      }
+    }
+
   }
 
   public static void addClasspathToScript(ScriptRunner runner) {

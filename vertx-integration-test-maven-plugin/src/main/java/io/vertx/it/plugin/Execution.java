@@ -109,11 +109,12 @@ public class Execution {
     //Wait for the grace period, or specific text
     grace();
 
+    final GroovyScriptHelper helper = new GroovyScriptHelper(run,
+        main, client, run.base(), node);
     if (getClientCheck() != null) {
       logger.info("Executing client-check : " + getClientCheck());
 
-      scriptRunner.setGlobalVariable("helper", new GroovyScriptHelper(run,
-          main, client, run.base(), node));
+      scriptRunner.setGlobalVariable("helper", helper);
       Map<String, Object> context = new LinkedHashMap<>();
       FileLogger lg = new FileLogger(new File(getExecutionDirectory(), "client-check.log"),
           logger);
@@ -140,13 +141,13 @@ public class Execution {
     }
 
     logger.info("[" + getFullName() + "] - Processes killed");
+    helper.close();
 
     if (getPostCheck() != null) {
       // Execute the post check
       logger.info("Executing post-check : " + getPostCheck());
 
-      scriptRunner.setGlobalVariable("helper", new GroovyScriptHelper(run,
-          main, client, run.base(), node));
+      scriptRunner.setGlobalVariable("helper", helper);
       Map<String, Object> context = new LinkedHashMap<>();
       FileLogger lg = new FileLogger(new File(getExecutionDirectory(), "post-run.log"), logger);
       scriptRunner.run("post-run script", run.base(), getPostCheck(), context, lg,
