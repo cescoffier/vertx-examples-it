@@ -159,6 +159,32 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>com.github.joelittlejohn.embedmongo</groupId>
+        <artifactId>embedmongo-maven-plugin</artifactId>
+        <version>0.1.12</version>
+        <executions>
+          <execution>
+            <id>start</id>
+            <goals>
+              <goal>start</goal>
+            </goals>
+            <configuration>
+              <databaseDirectory>${project.build.directory}/mongo</databaseDirectory>
+              <logging>file</logging>
+              <logFile>${project.build.directory}/mongo.log</logFile>
+              <logFileEncoding>utf-8</logFileEncoding>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
