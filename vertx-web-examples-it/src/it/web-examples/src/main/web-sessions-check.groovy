@@ -9,7 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat
 
 Capabilities capabilities = new DesiredCapabilities();
 DriverService service = PhantomJSDriverService.createDefaultService(capabilities);
-def driver = new PhantomJSDriver(service, capabilities);
+def driver = new PhantomJSDriver(service, capabilities)
+helper.enqueueCloseable(driver)
 
 def page = new FluentPage(driver) {
     public String getUrl() {

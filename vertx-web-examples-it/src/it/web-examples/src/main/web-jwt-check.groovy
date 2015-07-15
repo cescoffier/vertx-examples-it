@@ -13,8 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat
 Capabilities capabilities = new DesiredCapabilities();
 DriverService service = PhantomJSDriverService.createDefaultService(capabilities);
 driver = new PhantomJSDriver(service, capabilities);
-
-FluentWait await(FluentPage page) {  new FluentWait(page, new Search(driver)) }
+helper.enqueueCloseable(driver)
 
 def page = new FluentPage(driver) {
     public String getUrl() {
@@ -29,14 +28,14 @@ assertThat(page.$("h1").first().text).contains("Web site with public and private
 
 // No token, no access to anything
 page.click("#getProtected")
-await(page).atMost(10, TimeUnit.SECONDS).until("#protected").containsText("Error:")
+page.await().atMost(10, TimeUnit.SECONDS).until("#protected").containsText("Error:")
 
 // Get a token without authorities
 page.click("#generateToken")
-await(page).atMost(10, TimeUnit.SECONDS).until((Predicate) {
+page.await().atMost(10, TimeUnit.SECONDS).until((Predicate) {
     page.$("#token").text.length() > 30
 })
 page.click("#getProtected")
-await(page).atMost(10, TimeUnit.SECONDS).until("#protected").containsText("a secret you should keep for yourself...")
+page.await().atMost(10, TimeUnit.SECONDS).until("#protected").containsText("a secret you should keep for yourself...")
 
 return true

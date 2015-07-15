@@ -7,9 +7,14 @@ import org.openqa.selenium.remote.service.DriverService
 
 import static org.assertj.core.api.Assertions.assertThat
 
-Capabilities capabilities = new DesiredCapabilities();
-DriverService service = PhantomJSDriverService.createDefaultService(capabilities);
-def driver = new PhantomJSDriver(service, capabilities);
+DesiredCapabilities capabilities = new DesiredCapabilities();
+// Because script are loaded from https (CDN)
+capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, ["--web-security=no", "--ignore-ssl-errors=yes"]);
+capabilities.setCapability("acceptSslCerts", true)
+PhantomJSDriverService service = PhantomJSDriverService.createDefaultService(capabilities)
+
+driver = new PhantomJSDriver(service, capabilities)
+helper.enqueueCloseable(driver)
 
 def page = new FluentPage(driver) {
     public String getUrl() {

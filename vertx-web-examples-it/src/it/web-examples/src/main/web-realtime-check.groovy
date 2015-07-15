@@ -9,11 +9,14 @@ import org.openqa.selenium.remote.service.DriverService
 import org.fluentlenium.core.search.Search
 import java.util.concurrent.TimeUnit
 
-Capabilities capabilities = new DesiredCapabilities();
-DriverService service = PhantomJSDriverService.createDefaultService(capabilities);
-driver = new PhantomJSDriver(service, capabilities);
+DesiredCapabilities capabilities = new DesiredCapabilities();
+// Because script are loaded from https (CDN)
+capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, ["--web-security=no", "--ignore-ssl-errors=yes"]);
+capabilities.setCapability("acceptSslCerts", true)
+PhantomJSDriverService service = PhantomJSDriverService.createDefaultService(capabilities)
 
-FluentWait await(FluentPage page) {  new FluentWait(page, new Search(driver)) }
+driver = new PhantomJSDriver(service, capabilities)
+helper.enqueueCloseable(driver)
 
 def page = new FluentPage(driver) {
     public String getUrl() {
@@ -24,9 +27,10 @@ def page = new FluentPage(driver) {
 page.go()
 
 
-await(page).pollingEvery(1, TimeUnit.SECONDS).atMost(15, TimeUnit.SECONDS).until( (Predicate) {
-    page.$("code").size() > 3
-})
+page.await().pollingEvery(1, TimeUnit.SECONDS).atMost(15, TimeUnit.SECONDS)
+        .until( (Predicate) {
+            page.$("code").size() > 3
+        })
 
 println page.text("body")
 

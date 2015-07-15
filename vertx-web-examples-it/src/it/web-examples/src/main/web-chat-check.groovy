@@ -1,6 +1,4 @@
 import org.fluentlenium.core.FluentPage
-import org.fluentlenium.core.search.Search
-import org.fluentlenium.core.wait.FluentWait
 import org.openqa.selenium.phantomjs.PhantomJSDriver
 import org.openqa.selenium.phantomjs.PhantomJSDriverService
 import org.openqa.selenium.remote.DesiredCapabilities
@@ -13,12 +11,11 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
 // Because script are loaded from https (CDN)
 capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, ["--web-security=no", "--ignore-ssl-errors=yes"]);
 capabilities.setCapability("acceptSslCerts", true)
-PhantomJSDriverService service = PhantomJSDriverService.createDefaultService(capabilities);
+PhantomJSDriverService service = PhantomJSDriverService.createDefaultService(capabilities)
 
-driver = new PhantomJSDriver(service, capabilities);
-print capabilities.asMap()
+driver = new PhantomJSDriver(service, capabilities)
+helper.enqueueCloseable(driver)
 
-FluentWait await(FluentPage page) {  new FluentWait(page, new Search(driver)) }
 
 def page = new FluentPage(driver) {
     public String getUrl() {
@@ -39,6 +36,6 @@ assertThat(page.find("#chat").text).isEmpty()
 // The \n is important it simulate the enter key.
 page.fill("#input").with("hello\n")
 
-await(page).atMost(10, TimeUnit.SECONDS).until("#chat").containsText("hello")
+page.await().atMost(10, TimeUnit.SECONDS).until("#chat").containsText("hello")
 
 return true
