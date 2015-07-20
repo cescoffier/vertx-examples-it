@@ -23,12 +23,14 @@ public class Reporter {
   private static Template markdownTemplate;
   private static Template htmlTemplate;
   private static Template globalReport;
+  private static Template junitReport;
 
   public static void init() throws IOException {
     Handlebars handlebars = new Handlebars();
     markdownTemplate = handlebars.compile("templates/execution");
     htmlTemplate = handlebars.compile("templates/execution-html");
     globalReport = handlebars.compile("templates/report-html");
+    junitReport = handlebars.compile("templates/junit-report");
   }
 
   public static void createGlobalReports(List<Execution> executions, File directory) throws IOException {
@@ -81,6 +83,14 @@ public class Reporter {
   public static void createReports(Execution execution, File directory) throws IOException {
     createMarkdownReport(execution, directory);
     createHTMLReport(execution, directory);
+    createJunitReport(execution, directory);
+  }
+
+  private static void createJunitReport(Execution execution, File directory) throws IOException {
+    Context context = Context.newContext(execution);
+    final String result = junitReport.apply(context);
+    File out = new File(directory, execution.getReportName() + ".xml");
+    FileUtils.write(out, result);
   }
 
   public static void createMarkdownReport(Execution execution, File directory) throws IOException {

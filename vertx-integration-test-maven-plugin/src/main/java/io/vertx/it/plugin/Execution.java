@@ -419,4 +419,19 @@ public class Execution {
   public String getReportName() {
     return getFullName().replace(" ", "_").replace("#", "_");
   }
+
+  public int getErrorAsInt() {
+    if (getStatus().equalsIgnoreCase("ERROR")) {
+      return 1;
+    }
+    return 0;
+  }
+
+  public int getFailureAsInt() {
+    if (getStatus().equalsIgnoreCase("ERROR")) {
+      return 1;
+    }
+    return 0;
+  }
+
 }

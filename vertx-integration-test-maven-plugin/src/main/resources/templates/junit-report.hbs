@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="{{fullName}}" time="{{time}}" tests="1" errors="{{errorAsInt}}"
+           skipped="0"
+           failures="{{failureAsInt}}">
+    <properties>
+    </properties>
+    <testcase name="{{fullName}}" classname="{{fullName}}" time="{{time}}">
+        {{#hasFailed}}
+        <failure type="java.lang.AssertionError:">
+            {{exception}}
+        </failure>
+        {{/hasFailed}}
+    </testcase>
+</testsuite>
