@@ -99,7 +99,7 @@ public class Execution {
     logger.info("[" + getFullName() + "] - Initializing execution");
 
     main = new Executor();
-
+    client = new Executor();
     String cmd = node.get("command").asText();
     cmd = manageClustering(cmd);
 
@@ -111,10 +111,11 @@ public class Execution {
 
     final GroovyScriptHelper helper = new GroovyScriptHelper(run,
         main, client, run.base(), node);
+
+    scriptRunner.setGlobalVariable("helper", helper);
     if (getClientCheck() != null) {
       logger.info("Executing client-check : " + getClientCheck());
 
-      scriptRunner.setGlobalVariable("helper", helper);
       Map<String, Object> context = new LinkedHashMap<>();
       FileLogger lg = new FileLogger(new File(getExecutionDirectory(), "client-check.log"),
           logger);
@@ -122,7 +123,7 @@ public class Execution {
           "client-check", true);
 
     } else if (node.get("client-command") != null) {
-      client = new Executor();
+
       final String clientCmd
           = node.get("client-command").asText().replace("${interface}", run.getInterface());
       logger.info("[" + getFullName() + "] - Launching client: " + clientCmd);
@@ -146,8 +147,6 @@ public class Execution {
     if (getPostCheck() != null) {
       // Execute the post check
       logger.info("Executing post-check : " + getPostCheck());
-
-      scriptRunner.setGlobalVariable("helper", helper);
       Map<String, Object> context = new LinkedHashMap<>();
       FileLogger lg = new FileLogger(new File(getExecutionDirectory(), "post-run.log"), logger);
       scriptRunner.run("post-run script", run.base(), getPostCheck(), context, lg,

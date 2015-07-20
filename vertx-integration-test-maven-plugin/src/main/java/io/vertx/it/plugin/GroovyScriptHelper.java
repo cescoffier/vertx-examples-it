@@ -24,14 +24,6 @@ public class GroovyScriptHelper {
 
   public final JsonNode json;
 
-  public final String client_output;
-
-  public final String client_error;
-
-  public final String output;
-
-  public final String error;
-
   private List<Object> closeables = new ArrayList<>();
 
   public static void init(List<String> classpathElements) {
@@ -45,17 +37,29 @@ public class GroovyScriptHelper {
     this.client = client;
     this.base = base;
     this.json = json;
+  }
 
+
+  public String getMainError() {
+    return main.getError();
+  }
+
+  public String getMainOutput() {
+    return main.getOutput();
+  }
+
+  public String getClientError() {
     if (client != null) {
-      this.client_output = client.getOutput();
-      this.client_error = client.getError();
-    } else {
-      this.client_output = "";
-      this.client_error = "";
+      return client.getError();
     }
+    return "";
+  }
 
-    output = main.getOutput();
-    error = main.getError();
+  public String getClientOutput() {
+    if (client != null) {
+      return client.getOutput();
+    }
+    return "";
   }
 
   public boolean ensureSucceededInDeployingVerticle() {
@@ -67,56 +71,57 @@ public class GroovyScriptHelper {
   }
 
   public boolean ensureTextInErrorStream(String text) {
-    if (!error.toLowerCase().contains(text.toLowerCase())) {
+    if (!getMainError().toLowerCase().contains(text.toLowerCase())) {
       throw new AssertionError("Cannot find text `" + text + "` in the error stream");
     }
     return true;
   }
 
   public boolean ensureTextInClientErrorStream(String text) {
-    if (!client_error.toLowerCase().contains(text.toLowerCase())) {
-      throw new AssertionError("Cannot find text `" + text + "` in the client error stream");
+    if (!getClientError().toLowerCase().contains(text.toLowerCase())) {
+      throw new AssertionError("Cannot find text `"
+          + text + "` in the client error stream (" + getClientError() + ")");
     }
     return true;
   }
 
   public boolean ensureTextInOutputStream(String text) {
-    if (!output.toLowerCase().contains(text.toLowerCase())) {
-      throw new AssertionError("Cannot find text `" + text + "` in the output stream");
+    if (!getMainOutput().toLowerCase().contains(text.toLowerCase())) {
+      throw new AssertionError("Cannot find text `" + text + "` in the output stream (" + getMainOutput() + ")");
     }
     return true;
   }
 
   public boolean ensureTextInClientOutputStream(String text) {
-    if (!client_output.toLowerCase().contains(text.toLowerCase())) {
+    if (!getClientOutput().toLowerCase().contains(text.toLowerCase())) {
       throw new AssertionError("Cannot find text `" + text + "` in the client output stream");
     }
     return true;
   }
 
   public boolean ensureTextNotContainedInErrorStream(String text) {
-    if (error.toLowerCase().contains(text.toLowerCase())) {
+    if (getMainError().toLowerCase().contains(text.toLowerCase())) {
       throw new AssertionError("Text `" + text + "` found in the error stream");
     }
     return true;
   }
 
   public boolean ensureTextNotContainedInClientErrorStream(String text) {
-    if (client_error.toLowerCase().contains(text.toLowerCase())) {
+    if (getClientError().toLowerCase().contains(text.toLowerCase())) {
       throw new AssertionError("Text `" + text + "` found in the client error stream");
     }
     return true;
   }
 
   public boolean ensureTextNotContainedInOutputStream(String text) {
-    if (output.toLowerCase().contains(text.toLowerCase())) {
+    if (getMainOutput().toLowerCase().contains(text.toLowerCase())) {
       throw new AssertionError("Text `" + text + "` found in the output");
     }
     return true;
   }
 
   public boolean ensureTextNotContainedInClientOutputStream(String text) {
-    if (client_output.toLowerCase().contains(text.toLowerCase())) {
+    if (getClientOutput().toLowerCase().contains(text.toLowerCase())) {
       throw new AssertionError("Text `" + text + "` found in the client output");
     }
     return true;
