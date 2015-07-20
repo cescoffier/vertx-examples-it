@@ -7,6 +7,7 @@ import org.apache.maven.plugin.logging.Log;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class Executor {
 
@@ -84,7 +85,7 @@ public class Executor {
 
   public void waitForTermination() throws IOException {
     try {
-      result.waitFor();
+      result.waitFor(TimeUnit.MINUTES.toMillis(1));
     } catch (InterruptedException e) {
       // Ignore it.
     }
