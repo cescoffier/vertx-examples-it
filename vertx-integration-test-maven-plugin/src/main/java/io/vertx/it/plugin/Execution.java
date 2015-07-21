@@ -15,7 +15,9 @@ import org.apache.maven.shared.scriptinterpreter.ScriptRunner;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
@@ -421,17 +423,24 @@ public class Execution {
   }
 
   public int getErrorAsInt() {
-    if (getStatus().equalsIgnoreCase("ERROR")) {
-      return 1;
-    }
-    return 0;
+    return status == Status.ERROR ? 1 : 0;
   }
 
   public int getFailureAsInt() {
-    if (getStatus().equalsIgnoreCase("ERROR")) {
-      return 1;
-    }
-    return 0;
+    return status == Status.FAILURE ? 1 : 0;
+  }
+
+  public boolean hasFailed() {
+    return status != Status.SUCCESS;
+  }
+
+  private final NumberFormat numberFormat =
+      NumberFormat.getInstance( Locale.ENGLISH );
+
+  private static final int MS_PER_SEC = 1000;
+
+  public String getElapsedTimeAsString() {
+    return numberFormat.format( (double) getTime() / MS_PER_SEC );
   }
 
 }
