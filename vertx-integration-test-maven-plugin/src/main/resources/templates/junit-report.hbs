@@ -4,11 +4,11 @@
            failures="{{failureAsInt}}">
     <properties>
     </properties>
-    <testcase name="{{fullName}}" classname="{{fullName}}" time="{{time}}">
-        {{#hasFailed}}
+    <testcase name="{{fullName}}" classname="{{fullName}}" time="{{elapsedTimeAsString}}">
+        {{#if hasFailed}}
         <failure type="java.lang.AssertionError:">
             {{exception}}
         </failure>
-        {{/hasFailed}}
+        {{/if}}
     </testcase>
 </testsuite>
