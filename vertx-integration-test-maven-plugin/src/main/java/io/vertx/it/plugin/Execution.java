@@ -430,7 +430,7 @@ public class Execution {
     return status == Status.FAILURE ? 1 : 0;
   }
 
-  public boolean hasFailed() {
+  public boolean getFailed() {
     return status != Status.SUCCESS;
   }
 

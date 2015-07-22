@@ -5,7 +5,7 @@
     <properties>
     </properties>
     <testcase name="{{fullName}}" classname="{{fullName}}" time="{{elapsedTimeAsString}}">
-        {{#if hasFailed}}
+        {{#if failed}}
         <failure type="java.lang.AssertionError:">
             {{exception}}
         </failure>
