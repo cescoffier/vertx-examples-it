@@ -1,0 +1,17 @@
+{
+  "name": "maven-verticle-compiled-groovy",
+
+  "tags": ["maven", "groovy", "compiled"],
+
+  "executions": {
+
+    "javascript" : {
+      "directory" : "${base}/maven-verticles/maven-verticle-groovy-compiled",
+      "command" : "java -jar target/maven-verticle-compiled-groovy-${version}-fat.jar"
+    }
+
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "groovy-hello-check.groovy"
+}

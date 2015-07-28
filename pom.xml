@@ -19,6 +19,7 @@
     <module>vertx-integration-test-maven-plugin</module>
     <module>vertx-core-examples-it</module>
     <module>vertx-web-examples-it</module>
+    <module>vertx-maven-examples-it</module>
   </modules>
 
   <dependencies>

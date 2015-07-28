@@ -1,0 +1,17 @@
+{
+  "name": "maven-verticle-javascript",
+
+  "tags": ["maven", "javascript"],
+
+  "executions": {
+
+    "javascript" : {
+      "directory" : "${base}/maven-verticles/maven-verticle-js",
+      "command" : "java -jar target/maven-verticle-javascript-${version}-fat.jar"
+    }
+
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "js-hello-check.groovy"
+}

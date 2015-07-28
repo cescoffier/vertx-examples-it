@@ -1,0 +1,23 @@
+{
+  "name": "maven-verticle",
+
+  "tags": ["maven", "java"],
+
+  "executions": {
+
+    "java-no-conf" : {
+      "directory" : "${base}/maven-verticles/maven-verticle",
+      "command" : "java -jar target/maven-verticle-${version}-fat.jar"
+    },
+
+    "java-with-conf" : {
+      "directory" : "${base}/maven-verticles/maven-verticle",
+      "command" : "java -jar target/maven-verticle-${version}-fat.jar -conf src/conf/my-conf.json",
+      "client-check": "java-hello-check-with-conf.groovy"
+    }
+
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "java-hello-check.groovy"
+}

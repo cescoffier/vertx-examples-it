@@ -5,6 +5,10 @@
 **/*-examples/src/main/js
 **/*-examples/src/main/rb
 **/*-examples/src/main/resources
+**/maven-simplest/src
+**/maven-simplest/pom.xml
+**/maven-verticles/**/src
+**/maven-verticles/**/pom.xml
 **/examples-utils
 **/src/it/pom.xml
 target/

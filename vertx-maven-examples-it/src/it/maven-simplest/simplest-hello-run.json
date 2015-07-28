@@ -1,0 +1,17 @@
+{
+  "name": "simplest-hello",
+
+  "tags": ["embedded", "maven"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/maven-simplest/target",
+      "command" : "java -jar maven-simplest-${version}-fat.jar"
+    }
+
+  },
+
+  "grace-period": 5000,
+  "client-check": "simplest-hello-check.groovy"
+}

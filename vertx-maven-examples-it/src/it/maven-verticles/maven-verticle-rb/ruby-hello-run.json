@@ -1,0 +1,17 @@
+{
+  "name": "maven-verticle-ruby",
+
+  "tags": ["maven", "ruby"],
+
+  "executions": {
+
+    "javascript" : {
+      "directory" : "${base}/maven-verticles/maven-verticle-rb",
+      "command" : "java -jar target/maven-verticle-ruby-${version}-fat.jar"
+    }
+
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "ruby-hello-check.groovy"
+}
