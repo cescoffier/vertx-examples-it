@@ -20,6 +20,7 @@
     <module>vertx-core-examples-it</module>
     <module>vertx-web-examples-it</module>
     <module>vertx-maven-examples-it</module>
+    <module>vertx-metrics-examples-it</module>
   </modules>
 
   <dependencies>
