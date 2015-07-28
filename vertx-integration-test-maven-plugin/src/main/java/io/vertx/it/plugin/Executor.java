@@ -85,7 +85,7 @@ public class Executor {
 
   public void waitForTermination() throws IOException {
     try {
-      result.waitFor(TimeUnit.MINUTES.toMillis(1));
+      result.waitFor(TimeUnit.SECONDS.toMillis(10));
     } catch (InterruptedException e) {
       // Ignore it.
     }

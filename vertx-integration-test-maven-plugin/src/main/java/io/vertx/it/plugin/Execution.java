@@ -104,7 +104,7 @@ public class Execution {
     client = new Executor();
     String cmd = node.get("command").asText();
     cmd = manageClustering(cmd);
-
+    boolean mustWaitForClientTermination = true;
     logger.info("[" + getFullName() + "] - Launching " + cmd);
     command = main.execute(cmd, getExecutionDirectory());
 
@@ -123,7 +123,7 @@ public class Execution {
           logger);
       scriptRunner.run("client-check", run.base(), getClientCheck(), context, lg,
           "client-check", true);
-
+      mustWaitForClientTermination = false;
     } else if (node.get("client-command") != null) {
 
       final String clientCmd
@@ -139,8 +139,10 @@ public class Execution {
 
     Destroyer.INSTANCE.killThemAll();
     main.waitForTermination();
-    if (client != null) {
+    logger.info("Main Program terminated");
+    if (client != null  && mustWaitForClientTermination) {
       client.waitForTermination();
+      logger.info("Client Program terminated");
     }
 
     logger.info("[" + getFullName() + "] - Processes killed");
