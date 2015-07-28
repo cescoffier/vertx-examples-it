@@ -100,9 +100,10 @@ public class Execution {
   public void execute() throws IOException, RunFailureException {
     logger.info("[" + getFullName() + "] - Initializing execution");
 
-    main = new Executor();
+    main = new Executor().setEnv(getEnv());
     client = new Executor();
     String cmd = node.get("command").asText();
+
     cmd = manageClustering(cmd);
     boolean mustWaitForClientTermination = true;
     logger.info("[" + getFullName() + "] - Launching " + cmd);
@@ -271,6 +272,14 @@ public class Execution {
     return run.getClientExecuteUntil();
   }
 
+  private Map<String, String> getEnv() {
+    if (node.get("env") != null) {
+      return Run.MAPPER.convertValue(node.get("env"), Map.class);
+    } else {
+      return run.getEnv();
+    }
+  }
+
   public File getExecutionDirectory() {
     if (node.get("directory") != null) {
       return new File(node.get("directory").asText());
@@ -419,6 +428,14 @@ public class Execution {
   public String getClientCommand() {
     return clientCommand;
   }
+
+  public String getEnvironment() {
+    if (getEnv() != null) {
+      return getEnv().toString();
+    }
+    return null;
+  }
+
 
   public String getReportName() {
     return getFullName().replace(" ", "_").replace("#", "_");

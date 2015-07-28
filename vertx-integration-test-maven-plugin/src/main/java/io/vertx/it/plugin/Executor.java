@@ -6,6 +6,7 @@ import org.apache.maven.plugin.logging.Log;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +19,7 @@ public class Executor {
   private final LoggedOutputStream err;
 
   private DefaultExecuteResultHandler result = new DefaultExecuteResultHandler();
+  private Map<String, String> env;
 
   public static void init(Log log, Map<String, File> extraPath) {
     extra = extraPath;
@@ -27,6 +29,11 @@ public class Executor {
   public Executor() {
     out = new LoggedOutputStream(logger, false, true);
     err = new LoggedOutputStream(logger, true, true);
+  }
+
+  public Executor setEnv(Map<String, String> env) {
+    this.env = env;
+    return this;
   }
 
   public String execute(String cmd, File cwd) throws IOException {
@@ -59,9 +66,20 @@ public class Executor {
     executor.setProcessDestroyer(Destroyer.INSTANCE);
     executor.setExitValues(new int[]{143, 137, 0, 1});
     logger.info("Executing " + command.toString());
-    executor.execute(command, result);
+    executor.execute(command, getEnv(), result);
 
     return StringUtils.toString(command.toStrings(), " ");
+  }
+
+  private Map<String, String> getEnv() {
+    if (this.env == null) {
+      return System.getenv();
+    } else {
+      Map<String, String> current = new HashMap<>(System.getenv());
+      logger.info("Extending environment with " + env);
+      current.putAll(env);
+      return current;
+    }
   }
 
   private CommandLine prepare(CommandLine command, String cmd) {
