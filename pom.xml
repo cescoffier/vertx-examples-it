@@ -21,6 +21,8 @@
     <module>vertx-web-examples-it</module>
     <module>vertx-maven-examples-it</module>
     <module>vertx-metrics-examples-it</module>
+    <module>vertx-redis-examples-it</module>
+    <module>vertx-service-proxy-examples-it</module>
   </modules>
 
   <dependencies>
