@@ -23,6 +23,7 @@
     <module>vertx-metrics-examples-it</module>
     <module>vertx-redis-examples-it</module>
     <module>vertx-service-proxy-examples-it</module>
+    <module>vertx-jdbc-examples-it</module>
   </modules>
 
   <dependencies>

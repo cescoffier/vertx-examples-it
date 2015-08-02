@@ -1,0 +1,36 @@
+{
+  "name": "jdbc-query-params",
+
+  "tags": ["jdbc", "client", "query", "params"],
+
+  "libraries": [
+    "${dependencies}/hsqldb-2.3.2.jar"
+  ],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}",
+      "command" : "vertx run io.vertx.example.jdbc.query_params.JDBCExample -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/jdbc/query_params",
+      "command" : "vertx run jdbc_example.js -cp ${base}/target/classes:."
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/jdbc/query_params",
+      "command" : "vertx run jdbc_example.groovy -cp ${base}/target/classes:."
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/jdbc/query_params",
+      "command" : "vertx run jdbc_example.rb -cp ${base}/target/classes:."
+    }
+
+  },
+
+  "grace-text": "World",
+  "post-check": "jdbc-query-params-check.groovy"
+}

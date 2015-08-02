@@ -1,0 +1,36 @@
+{
+  "name": "jdbc-transaction",
+
+  "tags": ["jdbc", "client", "transaction"],
+
+  "libraries": [
+    "${dependencies}/hsqldb-2.3.2.jar"
+  ],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}",
+      "command" : "vertx run io.vertx.example.jdbc.transaction.JDBCExample -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/jdbc/transaction",
+      "command" : "vertx run jdbc_example.js -cp ${base}/target/classes:."
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/jdbc/transaction",
+      "command" : "vertx run jdbc_example.groovy -cp ${base}/target/classes:."
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/example/jdbc/transaction",
+      "command" : "vertx run jdbc_example.rb -cp ${base}/target/classes:."
+    }
+
+  },
+
+  "grace-text": "[1]",
+  "post-check": "jdbc-transaction-check.groovy"
+}
