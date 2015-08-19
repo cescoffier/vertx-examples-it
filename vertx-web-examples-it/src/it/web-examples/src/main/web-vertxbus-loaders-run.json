@@ -1,0 +1,21 @@
+{
+  "name": "web-vertxbus-loaders",
+
+  "tags": ["web", "vertxbus", "bridge", "loader"],
+
+  "executions": {
+
+    "amd" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/web/vertxbus/amd",
+      "command" : "vertx run io.vertx.example.web.vertxbus.amd.Server -cp ${base}/target/classes:."
+    },
+
+    "common-js" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/web/vertxbus/commonjs",
+      "command" : "vertx run io.vertx.example.web.vertxbus.commonjs.Server -cp ${base}/target/classes:."
+    }
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "web-vertxbus-loaders-check.groovy"
+}
