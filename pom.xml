@@ -24,6 +24,7 @@
     <module>vertx-redis-examples-it</module>
     <module>vertx-service-proxy-examples-it</module>
     <module>vertx-jdbc-examples-it</module>
+    <module>vertx-sync-examples-it</module>
   </modules>
 
   <dependencies>

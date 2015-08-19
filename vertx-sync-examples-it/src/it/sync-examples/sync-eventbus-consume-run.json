@@ -1,0 +1,31 @@
+{
+  "name": "sync-eventbus-consume",
+
+  "tags": ["sync", "eventbus", "consume"],
+
+  "libraries": [
+    "${dependencies}/vertx-sync-3.1.0-SNAPSHOT.jar",
+    "${dependencies}/quasar-core-0.7.2.jar",
+    "${dependencies}/guava-18.0.jar",
+    "${dependencies}/kryo-2.24.0.jar",
+    "${dependencies}/kryo-serializer-0.30.jar",
+    "${dependencies}/de.flapdoodle.embed.mongo-1.46.0.jar",
+    "${dependencies}/de.flapdoodle.embed.process-1.39.0.jar",
+    "${dependencies}/commons-compress-1.3.jar",
+    "${dependencies}/hsqldb-2.3.2.jar"
+  ],
+
+  "env": {
+    "VERTX_OPTS" : "-javaagent:${dependencies}/quasar-core-0.7.2.jar"
+  },
+
+  "executions": {
+    "java" : {
+      "directory" : "${base}",
+      "command" : "vertx run io.vertx.example.sync.eventbus.consume.Consume -cp ${base}/target/classes:."
+    }
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "post-check": "sync-eventbus-consume-check.groovy"
+}

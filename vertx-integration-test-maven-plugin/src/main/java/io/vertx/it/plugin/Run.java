@@ -61,7 +61,7 @@ public class Run {
         if (!file.isFile()) {
           log.warn("Cannot copy " + file.getAbsolutePath() + " to the lib directory - the file does not exist");
         } else {
-          log.info("Coyping " + file.getAbsolutePath() + " to " + libs.getAbsolutePath() + " - the file will be " +
+          log.info("Copying " + file.getAbsolutePath() + " to " + libs.getAbsolutePath() + " - the file will be " +
               "removed once the run has been completed");
           FileUtils.copyFileToDirectory(file, libs);
         }
