@@ -8,22 +8,22 @@
     "java" : {
       "directory" : "${base}/src/main/java/io/vertx/example/web/angularjs",
       "command" : "vertx run io.vertx.example.web.angularjs.Server -cp ${base}/target/classes:."
-    },
-
-    "js" : {
-      "directory" : "${base}/src/main/js/io/vertx/example/web/angularjs",
-      "command" : "vertx run server.js -cp ${base}/target/classes:."
-    },
-
-    "groovy": {
-      "directory" : "${base}/src/main/groovy/io/vertx/example/web/angularjs",
-      "command" : "vertx run server.groovy -cp ${base}/target/classes:."
-    },
-
-    "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/example/web/angularjs",
-      "command" : "vertx run server.rb -cp ${base}/target/classes:."
     }
+
+//    "js" : {
+//      "directory" : "${base}/src/main/js/io/vertx/example/web/angularjs",
+//      "command" : "vertx run server.js -cp ${base}/target/classes:."
+//    },
+//
+//    "groovy": {
+//      "directory" : "${base}/src/main/groovy/io/vertx/example/web/angularjs",
+//      "command" : "vertx run server.groovy -cp ${base}/target/classes:."
+//    },
+//
+//    "ruby": {
+//      "directory" : "${base}/src/main/rb/io/vertx/example/web/angularjs",
+//      "command" : "vertx run server.rb -cp ${base}/target/classes:."
+//    }
 
   },
 

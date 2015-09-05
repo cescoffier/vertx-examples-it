@@ -7,7 +7,7 @@ import static org.assertj.core.api.StrictAssertions.assertThat
 
 def data
 def http = new HTTPBuilder('http://localhost:8080')
-long begin = System.currentTimeMillis()
+long begin = System.nanoTime()
 http.request(GET, TEXT) { req ->
     response.success = { resp, reader ->
         assert resp.status == 200
@@ -15,7 +15,7 @@ http.request(GET, TEXT) { req ->
         println "Response length: ${resp.headers.'Content-Length'}"
         data = IOUtils.toString(reader)
         assertThat(data).contains("Hello World!")
-        long end = System.currentTimeMillis()
+        long end = System.nanoTime()
         def time = end - begin
         assertThat(time).isGreaterThanOrEqualTo(5000l)
     }
