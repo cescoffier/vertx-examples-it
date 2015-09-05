@@ -12,22 +12,22 @@
     "java" : {
       "directory" : "${base}",
       "command" : "vertx run io.vertx.example.jdbc.transaction_rollback.JDBCExample -cp ${base}/target/classes:."
-    },
-
-    "js" : {
-      "directory" : "${base}/src/main/js/io/vertx/example/jdbc/transaction_rollback",
-      "command" : "vertx run jdbc_example.js -cp ${base}/target/classes:."
-    },
-
-    "groovy": {
-      "directory" : "${base}/src/main/groovy/io/vertx/example/jdbc/transaction_rollback",
-      "command" : "vertx run jdbc_example.groovy -cp ${base}/target/classes:."
-    },
-
-    "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/example/jdbc/transaction_rollback",
-      "command" : "vertx run jdbc_example.rb -cp ${base}/target/classes:."
     }
+
+//    "js" : {
+//      "directory" : "${base}/src/main/js/io/vertx/example/jdbc/transaction_rollback",
+//      "command" : "vertx run jdbc_example.js -cp ${base}/target/classes:."
+//    },
+//
+//    "groovy": {
+//      "directory" : "${base}/src/main/groovy/io/vertx/example/jdbc/transaction_rollback",
+//      "command" : "vertx run jdbc_example.groovy -cp ${base}/target/classes:."
+//    },
+//
+//    "ruby": {
+//      "directory" : "${base}/src/main/rb/io/vertx/example/jdbc/transaction_rollback",
+//      "command" : "vertx run jdbc_example.rb -cp ${base}/target/classes:."
+//    }
 
   },
 
