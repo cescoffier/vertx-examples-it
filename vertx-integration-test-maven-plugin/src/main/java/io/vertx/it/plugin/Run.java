@@ -1,5 +1,6 @@
 package io.vertx.it.plugin;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 public class Run {
 
-  public static final ObjectMapper MAPPER = new ObjectMapper();
+  public static final ObjectMapper MAPPER = new ObjectMapper().enable(JsonParser.Feature.ALLOW_COMMENTS);
   private final Log log;
   private final File libs;
   private JsonNode node;
