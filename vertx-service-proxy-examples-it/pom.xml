@@ -58,6 +58,7 @@
               <additionalProperties>
                 <base>${project.build.directory}/it/${example.dir}</base>
                 <dependencies>${project.build.directory}/dependencies</dependencies>
+                <version>${project.version}</version>
               </additionalProperties>
             </configuration>
           </execution>
