@@ -1,0 +1,32 @@
+{
+  "name": "mongo",
+
+  "tags": ["mongo", "client"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/java/io/vertx/examples/mongo",
+      "command" : "vertx run io.vertx.examples.mongo.MongoClientVerticle -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/examples/mongo",
+      "command" : "vertx run mongo_client_verticle.js -cp ${base}/target/classes:."
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/examples/mongo",
+      "command" : "vertx run mongo_client_verticle.groovy -cp ${base}/target/classes:."
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/rb/io/vertx/examples/mongo",
+      "command" : "vertx run mongo_client_verticle.rb -cp ${base}/target/classes:."
+    }
+
+  },
+
+  "grace-text": "Product removed",
+  "post-check": "mongo-check.groovy"
+}
