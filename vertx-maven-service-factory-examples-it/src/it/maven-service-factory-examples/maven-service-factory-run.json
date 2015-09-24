@@ -1,0 +1,21 @@
+{
+  "name": "maven-service-factory",
+
+  "tags": ["maven", "service", "factory"],
+
+  "executions": {
+
+    "vertx" : {
+      "directory" : "${base}",
+      "command" : "vertx run maven:io.vertx:maven-service-factory-verticle:${version}::my-verticle"
+    },
+
+    "api" : {
+      "directory" : "${base}/maven-service-factory-api",
+      "command" : "vertx run io.vertx.examples.MyDeployingVerticle -cp target/maven-service-factory-api-${version}.jar"
+    }
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "maven-service-factory-check.groovy"
+}
