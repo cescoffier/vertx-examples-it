@@ -16,7 +16,7 @@
   ],
 
   "env": {
-    "VERTX_OPTS" : "-javaagent:${dependencies}/quasar-core-0.7.2.jar"
+    "ENABLE_VERTX_SYNC_AGENT" : true
   },
 
   "executions": {
