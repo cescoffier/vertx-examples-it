@@ -15,10 +15,6 @@
     "${dependencies}/hsqldb-2.3.2.jar"
   ],
 
-  "env": {
-    "ENABLE_VERTX_SYNC_AGENT" : true
-  },
-
   "executions": {
     "java" : {
       "directory" : "${base}",

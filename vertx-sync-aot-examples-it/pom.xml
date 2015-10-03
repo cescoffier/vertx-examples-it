@@ -10,7 +10,7 @@
     <version>3.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>vertx-sync-examples-it</artifactId>
+  <artifactId>vertx-sync-aot-examples-it</artifactId>
 
   <properties>
     <example.dir>sync-examples</example.dir>
@@ -148,10 +148,13 @@
                 <goal>package</goal>
                 <goal>org.apache.maven.plugins:maven-dependency-plugin:copy-dependencies</goal>
               </goals>
-              <!--<skipInvocation>${fastbuild}</skipInvocation>-->
+              <skipInvocation>${fastbuild}</skipInvocation>
               <properties>
                 <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
               </properties>
+              <profiles>
+                <profile>aot</profile>
+              </profiles>
             </configuration>
           </execution>
         </executions>

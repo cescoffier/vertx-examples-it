@@ -1,7 +1,7 @@
 {
-  "name": "sync-eventbus-combine",
+  "name": "sync-eventbus-consume",
 
-  "tags": ["sync", "eventbus", "combine"],
+  "tags": ["sync", "eventbus", "consume"],
 
   "libraries": [
     "${dependencies}/vertx-sync-3.1.0-SNAPSHOT.jar",
@@ -15,17 +15,13 @@
     "${dependencies}/hsqldb-2.3.2.jar"
   ],
 
-  "env": {
-    "ENABLE_VERTX_SYNC_AGENT" : true
-  },
-
   "executions": {
     "java" : {
       "directory" : "${base}",
-      "command" : "vertx run io.vertx.example.sync.eventbus.combine.Combine -cp ${base}/target/classes:."
+      "command" : "vertx run io.vertx.example.sync.eventbus.consume.Consume -cp ${base}/target/classes:."
     }
   },
 
   "grace-text": "Succeeded in deploying verticle",
-  "post-check": "sync-eventbus-combine-check.groovy"
+  "post-check": "sync-eventbus-consume-check.groovy"
 }

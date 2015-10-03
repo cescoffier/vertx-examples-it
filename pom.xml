@@ -25,6 +25,7 @@
     <module>vertx-service-proxy-examples-it</module>
     <module>vertx-jdbc-examples-it</module>
     <module>vertx-sync-examples-it</module>
+    <module>vertx-sync-aot-examples-it</module>
     <module>vertx-mongo-examples-it</module>
     <module>vertx-maven-service-factory-examples-it</module>
   </modules>
