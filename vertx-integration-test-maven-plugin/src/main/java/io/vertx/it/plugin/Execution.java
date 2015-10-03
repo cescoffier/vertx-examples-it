@@ -77,10 +77,9 @@ public class Execution {
   private final String name;
 
   /**
-   * The scripter runner that is responsible to execute hook scripts.
+   * The script runner that is responsible to execute hook scripts.
    */
   private ScriptRunner scriptRunner;
-  private String postCheck;
 
 
   public Execution(Run run, String name, JsonNode execution, Log logger) {
@@ -98,6 +97,11 @@ public class Execution {
   }
 
   public void execute() throws IOException, RunFailureException {
+    if (node.get("skipped") != null  && node.get("skipped").asBoolean()) {
+      logger.info("[" + getFullName() + "] - Execution skipped");
+      return;
+    }
+
     logger.info("[" + getFullName() + "] - Initializing execution");
 
     main = new Executor().setEnv(getEnv());
@@ -198,13 +202,8 @@ public class Execution {
     final String text = getGraceText();
     if (text != null) {
       Awaitility.await().atMost(1, TimeUnit.MINUTES).until(
-          new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-              return main.getOutput().contains(text)
-                  || main.getError().contains(text);
-            }
-          }
+          () -> main.getOutput().contains(text)
+              || main.getError().contains(text)
       );
     } else {
       TimeUtils.sleep(getGracePeriod());
@@ -232,22 +231,12 @@ public class Execution {
     String clientUntil = getClientExecuteUntil();
     if (until != null) {
       Awaitility.await().atMost(1, TimeUnit.MINUTES).until(
-          new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-              return main.getOutput().contains(until) || main.getError().contains(until);
-            }
-          }
+          () -> main.getOutput().contains(until) || main.getError().contains(until)
       );
     } else if (clientUntil != null) {
       Awaitility.await().atMost(1, TimeUnit.MINUTES).until(
-          new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-              return client.getOutput().contains(clientUntil)
-                  || client.getError().contains(clientUntil);
-            }
-          }
+          () -> client.getOutput().contains(clientUntil)
+              || client.getError().contains(clientUntil)
       );
     } else {
       if (node.get("execution-time") != null) {
