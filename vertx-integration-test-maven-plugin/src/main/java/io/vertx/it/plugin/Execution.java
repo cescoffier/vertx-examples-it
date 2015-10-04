@@ -335,10 +335,18 @@ public class Execution {
   }
 
   public String getOutputStream() {
-    return main.getOutput();
+    if (main != null) {
+      return main.getOutput();
+    } else {
+      return "";
+    }
   }
 
   public String getErrorStream() {
+    if (main == null) {
+      return "";
+    }
+
     return main.getError();
   }
 
