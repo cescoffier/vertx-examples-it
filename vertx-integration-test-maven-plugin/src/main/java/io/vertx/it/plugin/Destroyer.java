@@ -20,7 +20,10 @@ class Destroyer implements ProcessDestroyer {
     // Avoid direct instantiation.
   }
 
-  public void killThemAll() {
+  public synchronized void killThemAll() {
+    if (processes.size() <= 0) {
+      return;
+    }
     System.out.println(processes.size() + " processes need to be destroyed");
     List<Process> copy = new ArrayList<>(processes);
     for (Process p : copy) {
@@ -52,7 +55,7 @@ class Destroyer implements ProcessDestroyer {
    * successfully added
    */
   @Override
-  public boolean add(Process process) {
+  public synchronized boolean add(Process process) {
     return processes.add(process);
   }
 
@@ -67,7 +70,7 @@ class Destroyer implements ProcessDestroyer {
    * successfully removed
    */
   @Override
-  public boolean remove(Process process) {
+  public synchronized boolean remove(Process process) {
     return processes.remove(process);
   }
 
@@ -77,7 +80,7 @@ class Destroyer implements ProcessDestroyer {
    * @return the number of register process
    */
   @Override
-  public int size() {
+  public synchronized int size() {
     return processes.size();
   }
 
