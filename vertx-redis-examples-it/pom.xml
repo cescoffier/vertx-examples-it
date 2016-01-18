@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.2.0-SNAPSHOT</version>
+    <version>3.3.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>vertx-redis-examples-it</artifactId>
@@ -22,7 +22,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.2.0-SNAPSHOT</version>
+        <version>3.3.0-SNAPSHOT</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
@@ -52,7 +52,7 @@
             </goals>
             <phase>integration-test</phase>
             <configuration>
-              <vertxHome>${project.build.directory}/vert.x-${vertx.version}</vertxHome>
+              <vertxHome>${project.build.directory}/vert.x-${vertx.version}/vertx</vertxHome>
               <inputDirectory>${project.basedir}/src/it</inputDirectory>
               <outputDirectory>${project.build.directory}/it</outputDirectory>
               <additionalProperties>
