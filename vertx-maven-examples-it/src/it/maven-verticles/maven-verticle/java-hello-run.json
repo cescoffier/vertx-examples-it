@@ -7,12 +7,12 @@
 
     "java-no-conf" : {
       "directory" : "${base}/maven-verticles/maven-verticle",
-      "command" : "java -jar target/maven-verticle-${version}-fat.jar"
+      "command" : "java -jar target/maven-verticle-${jar.version}-fat.jar"
     },
 
     "java-with-conf" : {
       "directory" : "${base}/maven-verticles/maven-verticle",
-      "command" : "java -jar target/maven-verticle-${version}-fat.jar -conf src/conf/my-conf.json",
+      "command" : "java -jar target/maven-verticle-${jar.version}-fat.jar -conf src/conf/my-conf.json",
       "client-check": "java-hello-check-with-conf.groovy"
     }
 

@@ -7,7 +7,7 @@
 
     "java" : {
       "directory" : "${base}/maven-simplest/target",
-      "command" : "java -jar maven-simplest-${version}-fat.jar"
+      "command" : "java -jar maven-simplest-${jar.version}-fat.jar"
     }
 
   },

@@ -7,7 +7,7 @@
 
     "javascript" : {
       "directory" : "${base}/maven-verticles/maven-verticle-groovy",
-      "command" : "java -jar target/maven-verticle-groovy-${version}-fat.jar"
+      "command" : "java -jar target/maven-verticle-groovy-${jar.version}-fat.jar"
     }
 
   },

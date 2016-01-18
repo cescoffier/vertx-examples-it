@@ -7,7 +7,7 @@
 
     "javascript" : {
       "directory" : "${base}/maven-verticles/maven-verticle-js",
-      "command" : "java -jar target/maven-verticle-javascript-${version}-fat.jar"
+      "command" : "java -jar target/maven-verticle-javascript-${jar.version}-fat.jar"
     }
 
   },
