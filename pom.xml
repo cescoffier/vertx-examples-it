@@ -11,8 +11,8 @@
   <packaging>pom</packaging>
 
   <properties>
-    <vertx.version>3.3.0-SNAPSHOT</vertx.version>
-    <vertx.examples.branch>3.2.1-SNAPSHOT</vertx.examples.branch>
+    <vertx.version>3.2.1</vertx.version>
+    <vertx.examples.branch>3.2.1-staging</vertx.examples.branch>
   </properties>
 
   <modules>
@@ -110,14 +110,8 @@
 
   <repositories>
     <repository>
-      <id>oss.snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
+      <id>oss.staging</id>
+      <url>https://oss.sonatype.org/content/repositories/iovertx-2388/</url>
     </repository>
   </repositories>
 </project>
