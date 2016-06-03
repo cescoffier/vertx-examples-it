@@ -1,0 +1,40 @@
+{
+  "name": "eventbus-ssl",
+
+  "cluster": true,
+  "tags": ["eventbus", "core", "ssl"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/target/classes",
+      "command" : "vertx run io.vertx.example.core.eventbus.ssl.Sender -cluster -cluster-host ${interface}",
+      "client-command" : "vertx run io.vertx.example.core.eventbus.ssl.Receiver -cluster -cluster-host ${interface}",
+      "execute-until" : "pong"
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/core/eventbus/ssl",
+      "command" : "vertx run sender.js -cluster -cluster-host ${interface}",
+      "client-command" : "vertx run receiver.js -cluster -cluster-host ${interface}",
+      "execute-until" : "pong"
+    },
+
+    "groovy" : {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/core/eventbus/ssl",
+      "command" : "vertx run sender.groovy -cluster -cluster-host ${interface}",
+      "client-command" : "vertx run receiver.groovy -cluster -cluster-host ${interface}",
+      "execute-until" : "pong"
+    },
+
+    "ruby" : {
+      "directory" : "${base}/src/main/rb/io/vertx/example/core/eventbus/ssl",
+      "command" : "vertx run sender.rb -cluster -cluster-host ${interface}",
+      "client-command" : "vertx run receiver.rb -cluster -cluster-host ${interface}",
+      "execute-until" : "pong"
+    }
+  },
+
+  "post-check": "core-eventbus-ssl-check.groovy",
+  "grace-text": "Succeeded in deploying verticle"
+}
