@@ -1,4 +1,5 @@
 **/*-examples/**/pom.xml
+**/*-examples/**/codetrans-config.json
 **/*-examples/**/README.adoc
 **/*-examples/**/src/main/java
 **/*-examples/**/src/main/groovy
