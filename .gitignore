@@ -1,6 +1,7 @@
 **/*-examples/**/pom.xml
 **/*-examples/**/codetrans-config.json
 **/*-examples/**/README.adoc
+**/*-examples/**/README.md
 **/*-examples/**/src/main/java
 **/*-examples/**/src/main/groovy
 **/*-examples/**/src/main/js
