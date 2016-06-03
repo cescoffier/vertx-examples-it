@@ -1,0 +1,19 @@
+{
+  "name": "service-proxy-http",
+
+  "tags": ["service", "proxy", "http"],
+  "cluster": true,
+
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}",
+      "command" : "vertx run io.vertx.examples.service.ProcessorServiceVerticle -cp ${base}/service-provider/target/classes:${base}/service-provider/src/main/java/io/vertx/examples/service:."
+    }
+
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check" : "service-proxy-http-check.groovy"
+}
