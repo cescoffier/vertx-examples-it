@@ -56,9 +56,21 @@ public class Run {
       executions.add(new Execution(this, name, exec.get(name), log));
     }
 
+    // Read vert.x version
+    String vertxVersion = extractVertxVersion(vertx.getParentFile().getParentFile());
+    if (vertxVersion != null) {
+      log.debug("Extracted vert.x version: " + vertxVersion);
+    } else {
+      log.warn("Was not able to extract vert.x version");
+    }
+
     if (node.get("libraries") != null && node.get("libraries").isArray()) {
       for (JsonNode t : node.get("libraries")) {
-        File file = new File(t.asText());
+        String name = t.asText();
+        if (vertxVersion != null) {
+          name = t.asText().replace("${vertx.version}", vertxVersion);
+        }
+        File file = new File(name);
         if (!file.isFile()) {
           log.warn("Cannot copy " + file.getAbsolutePath() + " to the lib directory - the file does not exist");
         } else {
@@ -68,6 +80,25 @@ public class Run {
         }
       }
     }
+  }
+
+  private String extractVertxVersion(File dir) {
+    File json = new File(dir, "vertx-stack.json");
+    if (json.isFile()) {
+      try {
+        JsonNode node = MAPPER.readTree(json);
+        JsonNode variables = node.get("variables");
+        if (variables != null) {
+          JsonNode version = variables.get("vertx.version");
+          if (version != null) {
+            return version.asText();
+          }
+        }
+      } catch (IOException e) {
+        log.warn("Cannot read `vertx-stack.json` in " + dir.getAbsolutePath(), e);
+      }
+    }
+    return null;
   }
 
   public void cleanup() {
