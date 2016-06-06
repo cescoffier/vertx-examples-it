@@ -1,0 +1,33 @@
+{
+  "name": "mail-images",
+  "tags": [
+    "mail",
+    "images"
+  ],
+
+  "libraries": [
+    "${dependencies}/subethasmtp-3.1.7.jar",
+    "${dependencies}/mail-1.4.4.jar"
+  ],
+
+  "executions": {
+    "java": {
+      "directory": "${base}/src/main/java/io/vertx/example/mail",
+      "command": "vertx run io.vertx.example.mail.MailImages -cp ${base}/target/classes:."
+    },
+    "js": {
+      "directory": "${base}/src/main/js/io/vertx/example/mail",
+      "command": "vertx run mail_images.js -cp ${base}/target/classes:."
+    },
+    "groovy": {
+      "directory": "${base}/src/main/groovy/io/vertx/example/mail",
+      "command": "vertx run mail_images.groovy -cp ${base}/target/classes:."
+    },
+    "ruby": {
+      "directory": "${base}/src/main/rb/io/vertx/example/mail",
+      "command": "vertx run mail_images.rb -cp ${base}/target/classes:."
+    }
+  },
+  "grace-text": "Mail sent",
+  "post-check": "mail-images-check.groovy"
+}
