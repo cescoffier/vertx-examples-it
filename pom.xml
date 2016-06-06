@@ -32,6 +32,7 @@
     <module>vertx-heroku-examples-it</module>
     <module>vertx-jgroups-examples-it</module>
     <module>vertx-ignite-examples-it</module>
+    <module>vertx-spring-examples-it</module>
   </modules>
 
   <dependencies>

@@ -1,0 +1,16 @@
+{
+  "name": "springboot-example",
+
+  "tags": ["maven", "springboot"],
+
+  "executions": {
+
+    "springboot" : {
+      "directory" : "${base}/spring-examples/springboot-example",
+      "command" : "java -jar target/springboot-example-1.2.4.RELEASE.jar"
+    }
+  },
+
+  "grace-text": "Started Application",
+  "client-check": "springboot-example-check.groovy"
+}
