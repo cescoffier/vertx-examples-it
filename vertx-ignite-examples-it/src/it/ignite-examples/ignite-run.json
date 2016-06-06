@@ -1,0 +1,19 @@
+{
+  "name": "ignite-examples",
+
+  "tags": ["cluster", "ignite"],
+
+  "cluster": true,
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/target",
+      "command" : "java -jar ignite-examples-${version}-fat.jar run io.vertx.example.ignite.ProducerApp -cluster",
+      "client-command" : "java -jar ignite-examples-${version}-fat.jar run io.vertx.example.ignite.ConsumerApp -cluster"
+    }
+  },
+
+  "client-execute-until" : "hello vert.x",
+  "grace-text": "Sending data to",
+  "post-check": "ignite-check.groovy"
+}
