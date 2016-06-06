@@ -1,0 +1,16 @@
+{
+  "name": "heroku",
+
+  "tags": ["heroku", "compilation"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/java/io/vertx/example",
+      "command" : "vertx run HelloWorldVerticle.java -Dhttp.port=8081"
+    }
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "heroku-compile-check.groovy"
+}

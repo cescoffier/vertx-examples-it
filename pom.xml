@@ -29,6 +29,7 @@
     <module>vertx-mongo-examples-it</module>
     <module>vertx-maven-service-factory-examples-it</module>
     <module>vertx-mail-examples-it</module>
+    <module>vertx-heroku-examples-it</module>
   </modules>
 
   <dependencies>

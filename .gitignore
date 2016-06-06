@@ -8,6 +8,16 @@
 **/*-examples/**/src/main/rb
 **/*-examples/**/src/main/resources
 **/*-examples/**/src/main/generated
+**/*-example/**/pom.xml
+**/*-example/**/codetrans-config.json
+**/*-example/**/README.adoc
+**/*-example/**/README.md
+**/*-example/**/src/main/java
+**/*-example/**/src/main/groovy
+**/*-example/**/src/main/js
+**/*-example/**/src/main/rb
+**/*-example/**/src/main/resources
+**/*-example/**/src/main/generated
 **/maven-simplest/src
 **/maven-simplest/pom.xml
 **/maven-verticles/**/src
