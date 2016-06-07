@@ -201,7 +201,7 @@ public class Execution {
   private void grace() {
     final String text = getGraceText();
     if (text != null) {
-      Awaitility.await().atMost(1, TimeUnit.MINUTES).until(
+      Awaitility.await().atMost(3, TimeUnit.MINUTES).until(
           () -> main.getOutput().contains(text)
               || main.getError().contains(text)
       );
