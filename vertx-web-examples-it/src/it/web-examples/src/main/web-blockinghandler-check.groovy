@@ -3,7 +3,7 @@ import org.apache.commons.io.IOUtils
 
 import static groovyx.net.http.ContentType.TEXT
 import static groovyx.net.http.Method.GET
-import static org.assertj.core.api.StrictAssertions.assertThat
+import static org.assertj.core.api.Assertions.assertThat
 
 def data
 def http = new HTTPBuilder('http://localhost:8080')

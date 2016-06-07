@@ -5,7 +5,7 @@ import org.apache.http.entity.mime.MultipartEntityBuilder
 import org.apache.http.entity.mime.content.FileBody
 
 import static groovyx.net.http.Method.POST
-import static org.assertj.core.api.StrictAssertions.assertThat
+import static org.assertj.core.api.Assertions.assertThat
 
 def http = new HTTPBuilder('http://localhost:8080/form')
 def data;
