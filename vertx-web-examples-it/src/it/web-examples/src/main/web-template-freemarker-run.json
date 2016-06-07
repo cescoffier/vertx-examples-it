@@ -5,7 +5,7 @@
 
   "libraries": [
     "${dependencies}/vertx-web-templ-freemarker-${vertx.version}.jar",
-    "${dependencies}/freemarker-2.3.23.jar"
+    "${dependencies}/freemarker"
   ],
 
   "executions": {

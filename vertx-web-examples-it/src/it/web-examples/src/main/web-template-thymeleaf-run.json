@@ -4,7 +4,7 @@
   "tags": ["web", "template", "thymeleaf"],
 
   "libraries": [
-    "${dependencies}/javassist-3.16.1-GA.jar"
+    "${dependencies}/javassist"
   ],
 
   "executions": {

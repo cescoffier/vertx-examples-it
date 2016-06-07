@@ -8,6 +8,7 @@ import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.shared.scriptinterpreter.RunFailureException;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -30,6 +31,7 @@ public class Run {
   private List<Execution> executions = new ArrayList<>();
 
   private long totalExecutionTime;
+  private List<File> copiedLibraryFiles = new ArrayList<>();
 
   public Run(File json, Log log, File vertx, File reportDirectory, String itf) {
     file = json;
@@ -66,17 +68,35 @@ public class Run {
 
     if (node.get("libraries") != null && node.get("libraries").isArray()) {
       for (JsonNode t : node.get("libraries")) {
-        String name = t.asText();
+        String path = t.asText();
         if (vertxVersion != null) {
-          name = t.asText().replace("${vertx.version}", vertxVersion);
+          path = t.asText().replace("${vertx.version}", vertxVersion);
         }
-        File file = new File(name);
-        if (!file.isFile()) {
-          log.warn("Cannot copy " + file.getAbsolutePath() + " to the lib directory - the file does not exist");
-        } else {
-          log.info("Copying " + file.getAbsolutePath() + " to " + libs.getAbsolutePath() + " - the file will be " +
+
+        File file = new File(path);
+        File parent = file.getParentFile();
+        if (!parent.isDirectory()) {
+          log.error("Cannot copy dependencies - " + parent.getAbsolutePath() + " is not a directory");
+          return;
+        }
+
+        String prefix = file.getName();
+        File[] files = parent.listFiles((dir, name) -> name.startsWith(prefix));
+
+        if (files == null) {
+          log.error("Cannot copy dependencies - IO issue");
+          return;
+        }
+
+        for (File match : files) {
+          log.info("Copying " + match.getAbsolutePath() + " to " + libs.getAbsolutePath() + " - the file will be " +
               "removed once the run has been completed");
-          FileUtils.copyFileToDirectory(file, libs);
+          copiedLibraryFiles.add(new File(libs, match.getName()));
+          FileUtils.copyFileToDirectory(match, libs);
+        }
+
+        if (files.length == 0) {
+          log.error("Cannot find matching library file for " + prefix + " in " + parent.getAbsolutePath());
         }
       }
     }
@@ -102,16 +122,7 @@ public class Run {
   }
 
   public void cleanup() {
-    if (node.get("libraries") != null && node.get("libraries").isArray()) {
-      for (JsonNode t : node.get("libraries")) {
-        File file = new File(libs, new File(t.asText()).getName());
-        if (!file.isFile()) {
-          log.warn("Cannot delete " + file.getAbsolutePath() + " - the file does not exist");
-        } else {
-          FileUtils.deleteQuietly(file);
-        }
-      }
-    }
+    copiedLibraryFiles.forEach(FileUtils::deleteQuietly);
   }
 
 

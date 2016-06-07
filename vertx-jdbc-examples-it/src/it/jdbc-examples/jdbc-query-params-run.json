@@ -4,7 +4,7 @@
   "tags": ["jdbc", "client", "query", "params"],
 
   "libraries": [
-    "${dependencies}/hsqldb-2.3.2.jar"
+    "${dependencies}/hsqldb"
   ],
 
   "executions": {

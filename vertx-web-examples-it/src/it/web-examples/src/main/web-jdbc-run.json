@@ -6,7 +6,7 @@
     "jdbc"
   ],
   "libraries": [
-    "${dependencies}/hsqldb-2.3.2.jar"
+    "${dependencies}/hsqldb"
   ],
   "executions": {
     "java": {

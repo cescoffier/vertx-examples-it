@@ -5,7 +5,7 @@
     "core"
   ],
   "libraries": [
-    "${dependencies}/netty-tcnative-boringssl-static-1.1.33.Fork16.jar"
+    "${dependencies}/netty-tcnative-boringssl-static"
   ],
   "executions": {
     "java": {

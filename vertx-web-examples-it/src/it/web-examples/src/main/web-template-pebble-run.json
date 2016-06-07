@@ -5,8 +5,8 @@
 
   "libraries": [
     "${dependencies}/vertx-web-templ-pebble-${vertx.version}.jar",
-    "${dependencies}/pebble-2.0.0.jar",
-    "${dependencies}/coverity-escapers-1.1.jar"
+    "${dependencies}/pebble",
+    "${dependencies}/coverity-escapers"
   ],
 
   "executions": {

@@ -6,8 +6,8 @@
   ],
 
   "libraries": [
-    "${dependencies}/subethasmtp-3.1.7.jar",
-    "${dependencies}/mail-1.4.4.jar"
+    "${dependencies}/subethasmtp",
+    "${dependencies}/mail"
   ],
 
   "executions": {
