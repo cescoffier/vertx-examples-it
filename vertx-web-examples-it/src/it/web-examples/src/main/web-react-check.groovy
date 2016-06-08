@@ -5,8 +5,6 @@ import org.openqa.selenium.remote.DesiredCapabilities
 
 import java.util.concurrent.TimeUnit
 
-import static org.assertj.core.api.Assertions.assertThat
-
 DesiredCapabilities capabilities = new DesiredCapabilities();
 // Because script are loaded from https (CDN)
 capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, ["--web-security=no", "--ignore-ssl-errors=yes"]);
@@ -27,12 +25,12 @@ page.go()
 
 System.out.println("content: " + page.$("body").text)
 
-page.await().atMost(10, TimeUnit.SECONDS).until("input").hasSize().greaterThanOrEqualTo(1)
+page.await().atMost(30, TimeUnit.SECONDS).until("input").hasSize().greaterThanOrEqualTo(1)
 page.fill("input").with("clement\n")
 
-page.await().atMost(10, TimeUnit.SECONDS).until("span").containsText("type a message")
+page.await().atMost(30, TimeUnit.SECONDS).until("span").containsText("type a message")
 page.fill("input").with("bonjour\n")
 
-page.await().atMost(10, TimeUnit.SECONDS).until("span").containsText("bonjour")
+page.await().atMost(30, TimeUnit.SECONDS).until("span").containsText("bonjour")
 
 return true

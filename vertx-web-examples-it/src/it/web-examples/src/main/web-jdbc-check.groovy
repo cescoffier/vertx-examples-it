@@ -4,6 +4,7 @@ import static com.jayway.restassured.RestAssured.*
 import static org.hamcrest.Matchers.equalTo
 import static org.hamcrest.Matchers.hasItems
 
+Thread.sleep(5000)
 println get("/products").asString()
 get("/products").then().body("NAME", hasItems("Egg Whisk", "Tea Cosy", "Spatula"))
 get("/products/0").then().body("NAME", equalTo("Egg Whisk"))
