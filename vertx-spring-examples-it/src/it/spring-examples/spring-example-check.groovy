@@ -4,6 +4,7 @@ import org.apache.commons.io.IOUtils
 import static groovyx.net.http.ContentType.TEXT
 import static groovyx.net.http.Method.GET
 
+Thread.sleep(5000)
 def data
 def http = new HTTPBuilder('http://localhost:8080/products')
 http.request(GET, TEXT) { req ->
