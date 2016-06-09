@@ -4,7 +4,8 @@
   "tags": ["web", "template", "thymeleaf"],
 
   "libraries": [
-    "${dependencies}/javassist"
+    "${dependencies}/javassist",
+    "${dependencies}/attoparser"
   ],
 
   "executions": {
