@@ -7,7 +7,7 @@
 
     "spring-server" : {
       "directory" : "${base}/spring-examples/spring-example",
-      "command" : "java -jar target/spring-example-${version}-fat.jar"
+      "command" : "java -jar target/spring-example-${jar.version}-fat.jar"
     }
   },
 

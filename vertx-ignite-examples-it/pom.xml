@@ -15,6 +15,7 @@
   <properties>
     <example.dir>ignite-examples</example.dir>
     <fastbuild>false</fastbuild>
+    <jar.version>3.3.0.CR1</jar.version>
   </properties>
 
   <build>
@@ -70,6 +71,7 @@
               <additionalProperties>
                 <base>${project.build.directory}/it/${example.dir}</base>
                 <dependencies>${project.build.directory}/dependencies</dependencies>
+                <jar.version>${jar.version}</jar.version>
               </additionalProperties>
             </configuration>
           </execution>

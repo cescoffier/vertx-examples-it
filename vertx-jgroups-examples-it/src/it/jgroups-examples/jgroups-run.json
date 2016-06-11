@@ -8,8 +8,8 @@
 
     "java" : {
       "directory" : "${base}/target",
-      "command" : "java -jar jgroups-examples-${version}-fat.jar run io.vertx.example.jgroups.ProducerApp -cluster -cp . -Djgroups.bind_addr=${interface}",
-      "client-command" : "java -jar jgroups-examples-${version}-fat.jar run io.vertx.example.jgroups.ConsumerApp -cluster -cp . -Djgroups.bind_addr=${interface}"
+      "command" : "java -jar jgroups-examples-${jar.version}-fat.jar run io.vertx.example.jgroups.ProducerApp -cluster -cp . -Djgroups.bind_addr=${interface}",
+      "client-command" : "java -jar jgroups-examples-${jar.version}-fat.jar run io.vertx.example.jgroups.ConsumerApp -cluster -cp . -Djgroups.bind_addr=${interface}"
     }
   },
 
