@@ -8,7 +8,7 @@
   "libraries": [
     "${dependencies}/subethasmtp",
     "${dependencies}/mail",
-    "${dependencies}/vertx-mail-service-${version}.jar"
+    "${dependencies}/vertx-mail-service"
   ],
 
   "executions": {
