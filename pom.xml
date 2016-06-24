@@ -12,7 +12,7 @@
 
   <properties>
     <vertx.version>3.3.0</vertx.version>
-    <vertx.examples.branch>3.3.0-staging</vertx.examples.branch>
+    <vertx.examples.branch>master</vertx.examples.branch>
   </properties>
 
   <modules>
