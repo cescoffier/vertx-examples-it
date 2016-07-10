@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.3.0</version>
+    <version>3.3.2</version>
   </parent>
 
   <artifactId>vertx-core-examples-it</artifactId>
@@ -128,6 +128,9 @@
                 <goal>clean</goal>
                 <goal>install</goal>
               </goals>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
               <skipInvocation>${fastbuild}</skipInvocation>
             </configuration>
           </execution>
@@ -146,6 +149,9 @@
                 <goal>package</goal>
                 <goal>org.apache.maven.plugins:maven-dependency-plugin:copy-dependencies</goal>
               </goals>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
               <properties>
                 <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
               </properties>

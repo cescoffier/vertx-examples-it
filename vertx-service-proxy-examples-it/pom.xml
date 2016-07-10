@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.3.0</version>
+    <version>3.3.2</version>
   </parent>
 
   <artifactId>vertx-service-proxy-examples-it</artifactId>
@@ -15,7 +15,7 @@
   <properties>
     <example.dir>service-proxy-examples</example.dir>
     <fastbuild>false</fastbuild>
-    <jar.version>3.3.0</jar.version>
+    <jar.version>3.3.2</jar.version>
   </properties>
 
   <build>
@@ -39,7 +39,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.3.2</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
@@ -138,6 +138,9 @@
                 <goal>install</goal>
               </goals>
               <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
             </configuration>
           </execution>
 
@@ -159,6 +162,9 @@
               <properties>
                 <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
               </properties>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
             </configuration>
           </execution>
         </executions>

@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.3.0</version>
+    <version>3.3.2</version>
   </parent>
 
   <artifactId>vertx-ignite-examples-it</artifactId>
@@ -15,7 +15,7 @@
   <properties>
     <example.dir>ignite-examples</example.dir>
     <fastbuild>false</fastbuild>
-    <jar.version>3.3.0</jar.version>
+    <jar.version>3.3.2</jar.version>
   </properties>
 
   <build>
@@ -35,7 +35,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.3.2</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
@@ -132,6 +132,9 @@
                 <goal>clean</goal>
                 <goal>install</goal>
               </goals>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
               <skipInvocation>${fastbuild}</skipInvocation>
             </configuration>
           </execution>
@@ -151,6 +154,9 @@
                 <goal>org.apache.maven.plugins:maven-dependency-plugin:copy-dependencies</goal>
               </goals>
               <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
               <properties>
                 <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
               </properties>
