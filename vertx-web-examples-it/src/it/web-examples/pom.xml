@@ -110,11 +110,6 @@
 
     <dependency>
       <groupId>io.vertx</groupId>
-      <artifactId>vertx-web-templ-thymeleaf</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.vertx</groupId>
       <artifactId>vertx-web-templ-handlebars</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -130,12 +125,17 @@
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
-      <artifactId>vertx-web-templ-pebble</artifactId>
+      <artifactId>vertx-web-templ-thymeleaf</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-web-templ-freemarker</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-web-templ-pebble</artifactId>
       <version>${project.version}</version>
     </dependency>
 
@@ -161,17 +161,16 @@
     </pluginManagement>
   </build>
 
-  <repositories>
-    <repository>
-      <id>oss.snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/iovertx-2939/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  <profiles>
+    <profile>
+      <id>staging</id>
+      <repositories>
+        <repository>
+          <id>staging</id>
+          <url>https://oss.sonatype.org/content/repositories/iovertx-2993</url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
 
 </project>

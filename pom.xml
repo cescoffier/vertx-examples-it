@@ -12,7 +12,7 @@
 
   <properties>
     <vertx.version>3.3.2</vertx.version>
-    <vertx.examples.branch>3.3.2</vertx.examples.branch>
+    <vertx.examples.branch>master</vertx.examples.branch>
   </properties>
 
   <modules>
@@ -33,6 +33,7 @@
     <module>vertx-jgroups-examples-it</module>
     <module>vertx-ignite-examples-it</module>
     <module>vertx-spring-examples-it</module>
+    <module>vertx-resteasy-examples-it</module>
   </modules>
 
   <dependencies>
