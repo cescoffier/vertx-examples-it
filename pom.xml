@@ -6,13 +6,13 @@
 
   <groupId>io.vertx</groupId>
   <artifactId>integration-tests</artifactId>
-  <version>3.3.2</version>
+  <version>3.3.3</version>
 
   <packaging>pom</packaging>
 
   <properties>
-    <vertx.version>3.3.2</vertx.version>
-    <vertx.examples.branch>master</vertx.examples.branch>
+    <vertx.version>3.3.3</vertx.version>
+    <vertx.examples.branch>vertx-3.3.3</vertx.examples.branch>
   </properties>
 
   <modules>
@@ -127,7 +127,7 @@
     <!--</repository>-->
     <repository>
       <id>oss.snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/iovertx-2993</url>
+      <url>https://oss.sonatype.org/content/repositories/iovertx-3291</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
