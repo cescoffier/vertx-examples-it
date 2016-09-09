@@ -127,7 +127,7 @@
     <!--</repository>-->
     <repository>
       <id>oss.snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/iovertx-3291</url>
+      <url>https://oss.sonatype.org/content/repositories/iovertx-3295</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
