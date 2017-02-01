@@ -7,14 +7,14 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.3.3</version>
+    <version>3.4.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>vertx-spring-examples-it</artifactId>
 
   <properties>
     <fastbuild>false</fastbuild>
-    <jar.version>3.3.3</jar.version>
+    <jar.version>3.4.0-SNAPSHOT</jar.version>
   </properties>
 
   <build>
@@ -22,7 +22,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.3.3</version>
+        <version>3.4.0-SNAPSHOT</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
