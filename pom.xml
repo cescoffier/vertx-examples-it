@@ -15,27 +15,41 @@
     <vertx.examples.branch>3.4.0-SNAPSHOT</vertx.examples.branch>
   </properties>
 
-  <modules>
-    <module>vertx-integration-test-maven-plugin</module>
-    <module>vertx-core-examples-it</module>
-    <module>vertx-web-examples-it</module>
-    <module>vertx-maven-examples-it</module>
-    <module>vertx-metrics-examples-it</module>
-    <module>vertx-redis-examples-it</module>
-    <module>vertx-service-proxy-examples-it</module>
-    <module>vertx-jdbc-examples-it</module>
-    <module>vertx-sync-examples-it</module>
-    <module>vertx-sync-aot-examples-it</module>
-    <module>vertx-mongo-examples-it</module>
-    <module>vertx-maven-service-factory-examples-it</module>
-    <module>vertx-mail-examples-it</module>
-    <module>vertx-heroku-examples-it</module>
-    <module>vertx-jgroups-examples-it</module>
-    <module>vertx-ignite-examples-it</module>
-    <module>vertx-spring-examples-it</module>
-    <module>vertx-resteasy-examples-it</module>
-  </modules>
+  <profiles>
+    <profile>
+      <id>it</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>vertx-integration-test-maven-plugin</module>
+        <module>vertx-core-examples-it</module>
+        <module>vertx-web-examples-it</module>
+        <module>vertx-maven-examples-it</module>
+        <module>vertx-metrics-examples-it</module>
+        <module>vertx-redis-examples-it</module>
+        <module>vertx-service-proxy-examples-it</module>
+        <module>vertx-jdbc-examples-it</module>
+        <module>vertx-sync-examples-it</module>
+        <module>vertx-sync-aot-examples-it</module>
+        <module>vertx-mongo-examples-it</module>
+        <module>vertx-maven-service-factory-examples-it</module>
+        <module>vertx-mail-examples-it</module>
+        <module>vertx-heroku-examples-it</module>
+        <module>vertx-jgroups-examples-it</module>
+        <module>vertx-ignite-examples-it</module>
+        <module>vertx-spring-examples-it</module>
+        <module>vertx-resteasy-examples-it</module>
+      </modules>
+    </profile>
 
+    <profile>
+      <id>prepare</id>
+      <modules>
+        <module>vertx-integration-test-maven-plugin</module>
+      </modules>
+    </profile>
+  </profiles>
   <dependencies>
     <dependency>
       <groupId>io.vertx</groupId>
