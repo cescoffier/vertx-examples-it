@@ -22,6 +22,11 @@
       "directory" :  "${base}/src/main/rb/io/vertx/example/core/execblocking",
       "command" : "vertx run exec_blocking_example.rb -cp ${base}/target/classes:."
     }
+
+//    "kotlin": {
+//      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/execblocking",
+//      "command" : "vertx run ExecBlockingExample.kt -cp ${base}/target/classes:."
+//    }
   },
 
   "client-check": "core-blocking-check.groovy",

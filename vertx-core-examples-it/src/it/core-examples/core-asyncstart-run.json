@@ -23,6 +23,11 @@
     "ruby": {
       "directory" : "${base}/src/main/rb/io/vertx/example/core/verticle/asyncstart",
       "command" : "vertx run deploy_example.rb -cp ${base}/target/classes:."
+    },
+
+    "kotlin": {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/verticle/asyncstart",
+      "command" : "vertx run DeployExample.kt -cp ${base}/target/classes:."
     }
   },
 

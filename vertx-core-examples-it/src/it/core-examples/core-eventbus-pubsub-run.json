@@ -31,7 +31,7 @@
     }
   },
 
-  "client-execute-until" : "Received news:",
+  "client-execute-until" : "Received news on consumer 3",
   "post-check": "core-eventbus-pubsub-check.groovy",
   "grace-text": "Succeeded in deploying verticle"
 }
