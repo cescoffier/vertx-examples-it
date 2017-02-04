@@ -24,6 +24,11 @@
       "command" : "vertx run server.rb -cp ${base}/target/classes:. -ha -cluster-host ${interface}"
     },
 
+    "kotlin": {
+      "directory" :  "${base}/src/main/kotlin/io/vertx/example/core/ha",
+      "command" : "vertx run Server.kt -cp ${base}/target/classes:. -ha -cluster-host ${interface}"
+    },
+
     "bare" : {
       "directory" : "${base}/target/classes",
       "command" : "vertx -ha -cluster-host ${interface}",

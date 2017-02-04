@@ -29,6 +29,12 @@
       "client-check": "core-http-form-check.groovy"
     },
 
+    "kotlin": {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/http/simpleform",
+      "command" : "vertx run SimpleFormServer.kt -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-check.groovy"
+    },
+
     "java-upload" : {
       "directory" : "${base}/src/main/java/io/vertx/example/core/http/simpleformupload",
       "command" : "vertx run io.vertx.example.core.http.simpleformupload.SimpleFormUploadServer -cp ${base}/target/classes:.",
@@ -44,6 +50,12 @@
     "rb-upload" : {
       "directory" : "${base}/src/main/ruby/io/vertx/example/core/http/simpleformupload",
       "command" : "vertx run simple_form_upload_server.rb -cp ${base}/target/classes:.",
+      "client-check": "core-http-form-upload-check.groovy"
+    },
+
+    "kotlin-upload" : {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/http/simpleformupload",
+      "command" : "vertx run SimpleFormUploadServer.kt -cp ${base}/target/classes:.",
       "client-check": "core-http-form-upload-check.groovy"
     },
 

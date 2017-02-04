@@ -13,22 +13,27 @@
       "directory": "${base}/src/main/java/io/vertx/example/core/http2/push",
       "command": "vertx run io.vertx.example.core.http2.push.Server -cp ${base}/target/classes:.",
       "client-command": "vertx run io.vertx.example.core.http2.push.Client  -cp ${base}/target/classes:."
+    },
+    "js": {
+      "directory": "${base}/src/main/js/io/vertx/example/core/http2/push",
+      "command": "vertx run server.js -cp ${base}/target/classes:.",
+      "client-command": "vertx run client.js"
+    },
+    "groovy": {
+      "directory": "${base}/src/main/groovy/io/vertx/example/core/http2/push",
+      "command": "vertx run server.groovy -cp ${base}/target/classes:.",
+      "client-command": "vertx run client.groovy"
+    },
+    "ruby": {
+      "directory": "${base}/src/main/ruby/io/vertx/example/core/http2/push",
+      "command": "vertx run server.rb -cp ${base}/target/classes:.",
+      "client-command": "vertx run client.rb"
+    },
+    "kotlin": {
+      "directory": "${base}/src/main/kotlin/io/vertx/example/core/http2/push",
+      "command": "vertx run Server.kt -cp ${base}/target/classes:.",
+      "client-command": "vertx run Client.kt"
     }
-//    "js": {
-//      "directory": "${base}/src/main/js/io/vertx/example/core/http2/push",
-//      "command": "vertx run server.js -cp ${base}/target/classes:.",
-//      "client-command": "vertx run client.js"
-//    },
-//    "groovy": {
-//      "directory": "${base}/src/main/groovy/io/vertx/example/core/http2/push",
-//      "command": "vertx run server.groovy -cp ${base}/target/classes:.",
-//      "client-command": "vertx run client.groovy"
-//    },
-//    "ruby": {
-//      "directory": "${base}/src/main/ruby/io/vertx/example/core/http2/push",
-//      "command": "vertx run server.rb -cp ${base}/target/classes:.",
-//      "client-command": "vertx run client.rb"
-//    }
   },
   "post-check": "core-http2-push-check.groovy",
   "grace-text": "Server started",

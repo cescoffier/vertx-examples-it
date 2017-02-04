@@ -23,6 +23,11 @@
     "ruby": {
       "directory" : "${base}/src/main/ruby/io/vertx/example/core/http/sendfile",
       "command" : "vertx run send_file.rb -cp ${base}/target/classes:."
+    },
+
+    "kotlin": {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/http/sendfile",
+      "command" : "vertx run SendFile.kt -cp ${base}/target/classes:."
     }
   },
 

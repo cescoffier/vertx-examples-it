@@ -32,6 +32,13 @@
       "command" : "vertx run sender.rb -cluster -cluster-host ${interface}",
       "client-command" : "vertx run receiver.rb -cluster -cluster-host ${interface}",
       "execute-until" : "pong"
+    },
+
+    "kotlin" : {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/eventbus/pointtopoint",
+      "command" : "vertx run Sender.kt -cluster -cluster-host ${interface}",
+      "client-command" : "vertx run Receiver.kt -cluster -cluster-host ${interface}",
+      "execute-until" : "pong"
     }
   },
 

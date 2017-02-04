@@ -27,6 +27,11 @@
       "directory": "${base}/src/main/ruby/io/vertx/example/core/http2/simple",
       "command": "vertx run server.rb -cp ${base}/target/classes:.",
       "client-command": "vertx run client.rb"
+    },
+    "kotlin": {
+      "directory": "${base}/src/main/kotlin/io/vertx/example/core/http2/simple",
+      "command": "vertx run Server.kt -cp ${base}/target/classes:.",
+      "client-command": "vertx run Client.kt"
     }
   },
   "post-check": "core-http2-simple-check.groovy",
