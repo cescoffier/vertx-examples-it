@@ -25,7 +25,7 @@
     },
 
     "ruby" : {
-      "directory" : "${base}/src/main/rb/io/vertx/example/core/eventbus/pubsub",
+      "directory" : "${base}/src/main/ruby/io/vertx/example/core/eventbus/pubsub",
       "command" : "vertx run sender.rb -cluster -cluster-host ${interface}",
       "client-command" : "vertx run receiver.rb -cluster -cluster-host ${interface}"
     }

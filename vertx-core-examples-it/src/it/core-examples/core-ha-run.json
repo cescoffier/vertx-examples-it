@@ -20,7 +20,7 @@
     },
 
     "ruby": {
-      "directory" :  "${base}/src/main/rb/io/vertx/example/core/ha",
+      "directory" :  "${base}/src/main/ruby/io/vertx/example/core/ha",
       "command" : "vertx run server.rb -cp ${base}/target/classes:. -ha -cluster-host ${interface}"
     },
 

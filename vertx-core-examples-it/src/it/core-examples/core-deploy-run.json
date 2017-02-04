@@ -21,7 +21,7 @@
     },
 
     "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/example/core/verticle/deploy",
+      "directory" : "${base}/src/main/ruby/io/vertx/example/core/verticle/deploy",
       "command" : "vertx run deploy_example.rb -cp ${base}/target/classes:."
     }
   },
