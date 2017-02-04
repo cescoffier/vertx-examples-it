@@ -165,6 +165,47 @@
               </profiles>
             </configuration>
           </execution>
+
+          <execution>
+            <id>build-spring-verticle-factory-example</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <invokerTest>spring-examples/spring-verticle-factory</invokerTest>
+              <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+              </goals>
+              <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>build-springboot-clustering-example</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <invokerTest>spring-examples/springboot-clustering</invokerTest>
+              <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>spring-boot:repackage</goal>
+              </goals>
+              <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
