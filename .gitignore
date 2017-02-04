@@ -6,6 +6,8 @@
 **/*-examples/**/src/main/groovy
 **/*-examples/**/src/main/js
 **/*-examples/**/src/main/rb
+**/*-examples/**/src/main/ruby
+**/*-examples/**/src/main/kotlin
 **/*-examples/**/src/main/resources
 **/*-examples/**/src/main/generated
 **/*-example/**/pom.xml
@@ -16,6 +18,8 @@
 **/*-example/**/src/main/groovy
 **/*-example/**/src/main/js
 **/*-example/**/src/main/rb
+**/*-example/**/src/main/ruby
+**/*-example/**/src/main/kotlin
 **/*-example/**/src/main/resources
 **/*-example/**/src/main/generated
 **/maven-simplest/src
