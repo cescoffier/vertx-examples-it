@@ -5,7 +5,7 @@
 
   "executions": {
 
-    "javascript" : {
+    "ruby" : {
       "directory" : "${base}/maven-verticles/maven-verticle-rb",
       "command" : "java -jar target/maven-verticle-ruby-${jar.version}-fat.jar"
     }
