@@ -4,7 +4,7 @@
   "tags": ["web", "template", "freemarker"],
 
   "libraries": [
-    "${dependencies}/vertx-web-templ-freemarker-${vertx.version}.jar",
+    "${dependencies}/vertx-web-templ-freemarker-${vertx.version}-shaded.jar",
     "${dependencies}/freemarker"
   ],
 

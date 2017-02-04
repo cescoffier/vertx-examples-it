@@ -4,8 +4,7 @@
   "tags": ["web", "template", "pebble"],
 
   "libraries": [
-    "${dependencies}/vertx-web-templ-pebble-${vertx.version}.jar",
-    "${dependencies}/pebble",
+    "${dependencies}/vertx-web-templ-pebble-${vertx.version}-shaded.jar",
     "${dependencies}/coverity-escapers"
   ],
 

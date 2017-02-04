@@ -1,7 +1,7 @@
 {
   "name": "web-http2",
 
-  "tags": ["web", "http2", "http2"],
+  "tags": ["web", "http2", "http/2"],
 
   "libraries": [
     "${dependencies}/netty-tcnative-boringssl-static"
