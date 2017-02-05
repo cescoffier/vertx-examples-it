@@ -3,6 +3,10 @@
 
   "tags": ["web", "template", "handlebars"],
 
+  "libraries": [
+    "${dependencies}/slf4j-api"
+  ],
+
   "executions": {
 
     "java" : {

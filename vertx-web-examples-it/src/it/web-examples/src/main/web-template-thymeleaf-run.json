@@ -6,7 +6,8 @@
   "libraries": [
     "${dependencies}/javassist",
     "${dependencies}/attoparser",
-    "${dependencies}/unbescape"
+    "${dependencies}/unbescape",
+    "${dependencies}/slf4j-api"
   ],
 
   "executions": {

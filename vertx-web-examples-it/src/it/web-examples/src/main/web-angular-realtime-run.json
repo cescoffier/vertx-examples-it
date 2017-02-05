@@ -3,6 +3,10 @@
 
   "tags": ["web", "angularjs", "realtime"],
 
+  "libraries": [
+    "${dependencies}/slf4j-api"
+  ],
+
   "executions": {
 
     "java" : {

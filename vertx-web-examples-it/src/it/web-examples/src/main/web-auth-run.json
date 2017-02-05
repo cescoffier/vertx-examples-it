@@ -3,6 +3,10 @@
 
   "tags": ["web", "auth", "shiro"],
 
+  "libraries": [
+    "${dependencies}/slf4j-api"
+  ],
+
   "executions": {
 
     "java" : {
