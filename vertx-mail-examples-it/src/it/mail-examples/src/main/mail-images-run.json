@@ -7,7 +7,8 @@
 
   "libraries": [
     "${dependencies}/subethasmtp",
-    "${dependencies}/mail"
+    "${dependencies}/mail",
+    "${dependencies}/slf4j-api"
   ],
 
   "executions": {
