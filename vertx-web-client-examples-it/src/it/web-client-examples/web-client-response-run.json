@@ -1,0 +1,25 @@
+{
+  "name": "response",
+
+  "tags": ["http", "web-client", "response", "json", "pojo"],
+
+  "executions": {
+
+    "java-json" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/webclient/response/jsonobject",
+      "command" : "vertx run io.vertx.example.webclient.response.jsonobject.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.webclient.response.jsonobject.Client  -cp ${base}/target/classes:."
+    },
+
+    "java-pojo" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/webclient/response/jsonpojo",
+      "command" : "vertx run io.vertx.example.webclient.response.jsonpojo.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.webclient.response.jsonpojo.Client  -cp ${base}/target/classes:."
+    }
+
+  },
+
+  "post-check": "web-client-response-check.groovy",
+  "grace-text": "Succeeded in deploying verticle",
+  "client-execute-until" : "Cooper"
+}

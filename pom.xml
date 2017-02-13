@@ -40,6 +40,7 @@
         <module>vertx-ignite-examples-it</module>
         <module>vertx-spring-examples-it</module>
         <module>vertx-resteasy-examples-it</module>
+        <module>vertx-web-client-examples-it</module>
       </modules>
     </profile>
 
