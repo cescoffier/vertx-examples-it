@@ -21,18 +21,6 @@
       "directory" : "${base}/src/main/groovy/io/vertx/example/circuit/breaker",
       "command" : "vertx run server.groovy -cp ${base}/target/classes:.",
       "client-command" : "vertx run client.groovy"
-    },
-
-    "ruby": {
-      "directory" : "${base}/src/main/ruby/io/vertx/example/circuit/breaker",
-      "command" : "vertx run server.rb -cp ${base}/target/classes:.",
-      "client-command" : "vertx run client.rb"
-    },
-
-    "kotlin": {
-      "directory" : "${base}/src/main/kotlin/io/vertx/example/circuit/breaker",
-      "command" : "vertx run Server.kt -cp ${base}/target/classes:.",
-      "client-command" : "vertx run Client.kt"
     }
   },
 
