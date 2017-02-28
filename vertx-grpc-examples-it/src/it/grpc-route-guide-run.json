@@ -1,0 +1,34 @@
+{
+  "name": "grpc-hello-world",
+
+  "tags": ["grpc", "hello"],
+
+  "libraries": [
+    "${dependencies}/grpc-context",
+    "${dependencies}/grpc-core",
+    "${dependencies}/grpc-netty",
+    "${dependencies}/grpc-protobuf",
+    "${dependencies}/grpc-protobuf-lite",
+    "${dependencies}/grpc-stub",
+    "${dependencies}/guava",
+    "${dependencies}/gson",
+    "${dependencies}/vertx-grpc",
+    "${dependencies}/protobuf-java",
+    "${dependencies}/protobuf-java-util",
+    "${dependencies}/instrumentation-api"
+  ],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/grpc/routeguide",
+      "command" : "vertx run io.vertx.example.grpc.routeguide.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.grpc.routeguide.Client  -cp ${base}/target/classes:."
+    }
+    
+  },
+
+  "post-check": "grpc-route-guide-check.groovy",
+  "grace-text": "Succeeded in deploying verticle",
+  "client-execute-until" : "Finished RecordRoute"
+}
