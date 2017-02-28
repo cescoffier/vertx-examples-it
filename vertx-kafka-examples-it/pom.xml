@@ -10,10 +10,11 @@
     <version>3.4.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>vertx-metrics-examples-it</artifactId>
+  <artifactId>vertx-kafka-examples-it</artifactId>
 
   <properties>
     <fastbuild>false</fastbuild>
+    <jar.version>${project.version}</jar.version>
   </properties>
 
   <build>
@@ -49,7 +50,7 @@
               <url>https://github.com/vert-x3/vertx-examples/archive/${vertx.examples.branch}.zip</url>
               <prefix>vertx-examples-${vertx.examples.branch}</prefix>
               <includes>
-                <include>**/metrics-examples/**/*</include>
+                <include>**/kafka-examples/**/*</include>
                 <include>vertx-examples-${vertx.examples.branch}/pom.xml</include>
                 <include>**/examples-utils/**/*</include>
               </includes>
@@ -71,9 +72,11 @@
               <inputDirectory>${project.basedir}/src/it</inputDirectory>
               <outputDirectory>${project.build.directory}/it</outputDirectory>
               <additionalProperties>
-                <base>${project.build.directory}/it/metrics-examples</base>
+                <base>${project.build.directory}/it/kafka-examples</base>
                 <dependencies>${project.build.directory}/dependencies</dependencies>
                 <phantomjs.binary.path>${phantomjs.binary}</phantomjs.binary.path>
+                <version>${jar.version}</version>
+                <jar.version>${jar.version}</jar.version>
               </additionalProperties>
             </configuration>
           </execution>
@@ -148,7 +151,7 @@
             <phase>package</phase>
             <configuration>
               <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-              <invokerTest>metrics-examples</invokerTest>
+              <invokerTest>kafka-examples</invokerTest>
               <goals>
                 <goal>clean</goal>
                 <goal>package</goal>
