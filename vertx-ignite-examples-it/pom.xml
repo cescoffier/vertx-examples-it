@@ -15,7 +15,7 @@
   <properties>
     <example.dir>ignite-examples</example.dir>
     <fastbuild>false</fastbuild>
-    <jar.version>${project.version}</jar.version>
+    <jar.version>3.4.0</jar.version>
   </properties>
 
   <build>
