@@ -14,7 +14,7 @@
 
   <properties>
     <fastbuild>false</fastbuild>
-    <jar.version>3.4.0-SNAPSHOT</jar.version>
+    <jar.version>3.4.0</jar.version>
   </properties>
 
   <build>
@@ -194,7 +194,7 @@
             <phase>package</phase>
             <configuration>
               <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-              <invokerTest>spring-examples/springboot-clustering</invokerTest>
+              <invokerTest>spring-examples/springboot-clustering/springboot-clustering-hazelcast</invokerTest>
               <goals>
                 <goal>clean</goal>
                 <goal>package</goal>

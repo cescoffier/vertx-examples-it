@@ -15,7 +15,7 @@
   <properties>
     <example.dir>maven-service-factory-examples</example.dir>
     <fastbuild>false</fastbuild>
-    <jar.version>3.4.0-SNAPSHOT</jar.version>
+    <jar.version>3.4.0</jar.version>
   </properties>
 
   <build>
