@@ -46,7 +46,7 @@ public class Executor {
     for (Map.Entry<String, File> entry : extra.entrySet()) {
       if (cmd.startsWith(entry.getKey() + " ")) {
         cmd = cmd.replaceFirst(entry.getKey(), entry.getValue().getAbsolutePath());
-        command = new CommandLine(entry.getValue());
+        command = CommandLine.parse(cmd);
         found = true;
         break;
       }
