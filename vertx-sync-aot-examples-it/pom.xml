@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.4.0-SNAPSHOT</version>
+    <version>3.4.1</version>
   </parent>
 
   <artifactId>vertx-sync-aot-examples-it</artifactId>
@@ -34,7 +34,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.4.0-SNAPSHOT</version>
+        <version>3.4.1</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
