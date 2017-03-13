@@ -4,7 +4,9 @@
   "tags": ["web", "auth", "shiro"],
 
   "libraries": [
-    "${dependencies}/slf4j-api"
+    "${dependencies}/slf4j-api",
+    "${dependencies}/vertx-auth-shiro",
+    "${dependencies}/shiro-core"
   ],
 
   "executions": {

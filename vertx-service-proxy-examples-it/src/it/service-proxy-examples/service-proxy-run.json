@@ -18,13 +18,7 @@
       "command" : "vertx run io.vertx.examples.service.ProcessorServiceVerticle -cp ${base}/service-provider/target/classes:. -cluster -cluster-host ${interface}",
       "client-command" : "vertx run service-consumer/src/main/js/io/vertx/examples/service/consumer/consumer_verticle.js -cp service-provider/target/service-provider-${jar.version}.jar -cluster -cluster-host ${interface}"
     },
-
-    "groovy": {
-      "directory" : "${base}",
-      "command" : "vertx run io.vertx.examples.service.ProcessorServiceVerticle -cp ${base}/service-provider/target/classes:. -cluster -cluster-host ${interface}",
-      "client-command" : "vertx run service-consumer/src/main/groovy/io/vertx/examples/service/consumer/consumer_verticle.groovy -cp service-provider/target/service-provider-${jar.version}.jar -cluster -cluster-host ${interface}"
-    },
-
+    
     "ruby": {
       "directory" : "${base}",
       "command" : "vertx run io.vertx.examples.service.ProcessorServiceVerticle -cp ${base}/service-provider/target/classes:. -cluster -cluster-host ${interface}",
