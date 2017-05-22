@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.4.1</version>
+    <version>3.4.2-SNAPSHOT</version>
   </parent>
 
   <artifactId>vertx-maven-service-factory-examples-it</artifactId>
@@ -15,7 +15,7 @@
   <properties>
     <example.dir>maven-service-factory-examples</example.dir>
     <fastbuild>false</fastbuild>
-    <jar.version>3.4.1</jar.version>
+    <jar.version>3.4.2-SNAPSHOT</jar.version>
   </properties>
 
   <build>
@@ -23,7 +23,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>3.4.2-SNAPSHOT</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
