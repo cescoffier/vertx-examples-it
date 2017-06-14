@@ -14,7 +14,7 @@
 
   <properties>
     <fastbuild>false</fastbuild>
-    <jar.version>3.4.2-SNAPSHOT</jar.version>
+    <jar.version>3.4.2</jar.version>
   </properties>
 
   <build>

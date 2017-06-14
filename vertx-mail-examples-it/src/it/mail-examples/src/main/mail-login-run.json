@@ -19,10 +19,6 @@
     "groovy": {
       "directory": "${base}/src/main/groovy/io/vertx/example/mail",
       "command": "vertx run mail_login.groovy -cp ${base}/target/classes:."
-    },
-    "ruby": {
-      "directory": "${base}/src/main/ruby/io/vertx/example/mail",
-      "command": "vertx run mail_login.rb -cp ${base}/target/classes:."
     }
   },
   "grace-text": "Mail sent",
