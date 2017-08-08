@@ -11,12 +11,12 @@
 
     "vertx" : {
       "directory" : "${base}",
-      "command" : "vertx run maven:io.vertx:maven-service-factory-verticle:${jar.version}::my-verticle -Dvertx.maven.remoteRepos=https://oss.sonatype.org/content/repositories/iovertx-3684"
+      "command" : "vertx run maven:io.vertx:maven-service-factory-verticle:${jar.version}::my-verticle -Dvertx.maven.remoteRepos=https://oss.sonatype.org/content/repositories/iovertx-3687"
     },
 
     "api" : {
       "directory" : "${base}/maven-service-factory-api",
-      "command" : "vertx run io.vertx.examples.MyDeployingVerticle -cp target/maven-service-factory-api-${jar.version}.jar -Dvertx.maven.remoteRepos=https://oss.sonatype.org/content/repositories/iovertx-3684"
+      "command" : "vertx run io.vertx.examples.MyDeployingVerticle -cp target/maven-service-factory-api-${jar.version}.jar -Dvertx.maven.remoteRepos=https://oss.sonatype.org/content/repositories/iovertx-3687"
     }
   },
 
