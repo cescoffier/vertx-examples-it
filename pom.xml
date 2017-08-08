@@ -12,7 +12,7 @@
 
   <properties>
     <vertx.version>3.5.0.Beta1</vertx.version>
-    <vertx.examples.branch>3.5.0.beta1</vertx.examples.branch>
+    <vertx.examples.branch>3.5.0.beta1-staging</vertx.examples.branch>
   </properties>
 
   <profiles>
