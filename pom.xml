@@ -6,13 +6,13 @@
 
   <groupId>io.vertx</groupId>
   <artifactId>integration-tests</artifactId>
-  <version>3.5.0.Beta1</version>
+  <version>3.5.0</version>
 
   <packaging>pom</packaging>
 
   <properties>
-    <vertx.version>3.5.0.Beta1</vertx.version>
-    <vertx.examples.branch>3.5.0.beta1-staging</vertx.examples.branch>
+    <vertx.version>3.5.0</vertx.version>
+    <vertx.examples.branch>3.5.0-staging</vertx.examples.branch>
   </properties>
 
   <profiles>
@@ -134,7 +134,7 @@
   <repositories>
     <repository>
       <id>staging</id>
-      <url>https://oss.sonatype.org/content/repositories/iovertx-3687</url>
+      <url>https://oss.sonatype.org/content/repositories/iovertx-3711</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>

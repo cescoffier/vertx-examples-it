@@ -1,3 +1,5 @@
+.idea
+*.iml
 **/*-examples/**/pom.xml
 **/*-examples/**/codetrans-config.json
 **/*-examples/**/README.adoc
