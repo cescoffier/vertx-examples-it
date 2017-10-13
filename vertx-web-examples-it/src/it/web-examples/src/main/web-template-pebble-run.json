@@ -4,8 +4,7 @@
   "tags": ["web", "template", "pebble"],
 
   "libraries": [
-    "${dependencies}/vertx-web-templ-pebble-${vertx.version}.jar",
-    "${dependencies}/pebble",
+    "${dependencies}/vertx-web-templ-pebble-${vertx.version}-shaded.jar",
     "${dependencies}/coverity-escapers"
   ],
 
@@ -27,7 +26,7 @@
     },
 
     "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/example/web/templating/pebble",
+      "directory" : "${base}/src/main/ruby/io/vertx/example/web/templating/pebble",
       "command" : "vertx run server.rb -cp ${base}/target/classes:."
     }
 

@@ -25,7 +25,7 @@
     },
 
     "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/example/metrics/dashboard",
+      "directory" : "${base}/src/main/ruby/io/vertx/example/metrics/dashboard",
       "command" : "vertx run dashboard.rb -cp ${base}/target/classes:."
     }
 

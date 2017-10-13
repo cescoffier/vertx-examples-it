@@ -21,7 +21,7 @@
     },
 
     "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/examples/mongo",
+      "directory" : "${base}/src/main/ruby/io/vertx/examples/mongo",
       "command" : "vertx run mongo_client_verticle.rb -cp ${base}/target/classes:."
     }
 

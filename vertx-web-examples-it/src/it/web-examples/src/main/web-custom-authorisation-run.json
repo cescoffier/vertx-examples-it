@@ -21,7 +21,7 @@
     },
 
     "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/example/web/custom_authorisation",
+      "directory" : "${base}/src/main/ruby/io/vertx/example/web/custom_authorisation",
       "command" : "vertx run server.rb -cp ${base}/target/classes:."
     }
 

@@ -6,7 +6,6 @@
   "libraries": [
     "${dependencies}/vertx-sync-${version}.jar",
     "${dependencies}/quasar-core",
-    "${dependencies}/guava",
     "${dependencies}/kryo",
     "${dependencies}/de.flapdoodle.embed",
     "${dependencies}/commons-compress",

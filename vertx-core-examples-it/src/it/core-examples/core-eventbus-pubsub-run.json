@@ -25,13 +25,19 @@
     },
 
     "ruby" : {
-      "directory" : "${base}/src/main/rb/io/vertx/example/core/eventbus/pubsub",
+      "directory" : "${base}/src/main/ruby/io/vertx/example/core/eventbus/pubsub",
       "command" : "vertx run sender.rb -cluster -cluster-host ${interface}",
       "client-command" : "vertx run receiver.rb -cluster -cluster-host ${interface}"
+    },
+
+    "kotlin" : {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/eventbus/pubsub",
+      "command" : "vertx run Sender.kt -cluster -cluster-host ${interface}",
+      "client-command" : "vertx run Receiver.kt -cluster -cluster-host ${interface}"
     }
   },
 
-  "client-execute-until" : "Received news:",
+  "client-execute-until" : "Received news on consumer 3",
   "post-check": "core-eventbus-pubsub-check.groovy",
   "grace-text": "Succeeded in deploying verticle"
 }

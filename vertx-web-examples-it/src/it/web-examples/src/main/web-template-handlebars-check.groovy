@@ -11,8 +11,11 @@ http.request(GET, TEXT) { req ->
         assert resp.status == 200
         def data = IOUtils.toString(reader)
         assertThat(data)
-                .contains("Hello Handlebars")
-                .contains("Hello Vert.x Web")
+                .contains("Spring")
+                .contains("Summer")
+                .contains("Autumn")
+                .contains("Winter")
+                .contains(": 4")
     }
 
     // called only for a 404 (not found) status code:

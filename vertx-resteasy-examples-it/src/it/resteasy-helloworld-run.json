@@ -1,0 +1,31 @@
+{
+  "name": "resteasy-rest",
+  "tags": [
+    "rest",
+    "resteasy"
+  ],
+
+  "libraries": [
+    "${dependencies}/resteasy-vertx",
+    "${dependencies}/resteasy-jaxrs",
+    "${dependencies}/jboss-jaxrs-api_2.0_spec",
+    "${dependencies}/jboss-annotations-api_1.2_spec",
+    "${dependencies}/activation",
+    "${dependencies}/httpclient",
+    "${dependencies}/httpcore",
+    "${dependencies}/commons-logging",
+    "${dependencies}/commons-codec",
+    "${dependencies}/commons-commons-io",
+    "${dependencies}/jcop-annotations",
+    "${dependencies}/jboss-logging"
+  ],
+  "executions": {
+    "java": {
+      "directory": "${base}/src/main/java/io/vertx/examples/resteasy/asyncresponse",
+      "command": "vertx run io.vertx.examples.resteasy.asyncresponse.Main -cp ${base}/target/classes:."
+    }
+  },
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "resteasy-rest-check.groovy"
+
+}

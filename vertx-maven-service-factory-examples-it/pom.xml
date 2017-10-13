@@ -2,20 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>io.vertx</groupId>
-        <artifactId>integration-tests</artifactId>
-        <version>3.3.0</version>
-    </parent>
+  <parent>
+    <groupId>io.vertx</groupId>
+    <artifactId>integration-tests</artifactId>
+    <version>3.5.0</version>
+  </parent>
 
-    <artifactId>vertx-maven-service-factory-examples-it</artifactId>
+  <artifactId>vertx-maven-service-factory-examples-it</artifactId>
 
   <properties>
     <example.dir>maven-service-factory-examples</example.dir>
     <fastbuild>false</fastbuild>
-    <jar.version>3.3.0</jar.version>
+    <jar.version>${project.version}</jar.version>
   </properties>
 
   <build>
@@ -23,7 +23,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
@@ -121,6 +121,9 @@
                 <goal>install</goal>
               </goals>
               <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
             </configuration>
           </execution>
 
@@ -143,6 +146,9 @@
               <properties>
                 <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
               </properties>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
             </configuration>
           </execution>
         </executions>

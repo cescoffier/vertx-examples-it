@@ -1,0 +1,48 @@
+{
+  "name": "json",
+
+  "tags": ["http", "web-client", "json"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/webclient/send/jsonobject",
+      "command" : "vertx run io.vertx.example.webclient.send.jsonobject.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.webclient.send.jsonobject.Client  -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/webclient/send/jsonobject",
+      "command" : "vertx run server.js -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.js"
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/webclient/send/jsonobject",
+      "command" : "vertx run server.groovy -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.groovy"
+    },
+
+    "ruby": {
+      "directory" : "${base}/src/main/ruby/io/vertx/example/webclient/send/jsonobject",
+      "command" : "vertx run server.rb -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.rb"
+    },
+
+    "kotlin": {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/webclient/send/jsonobject",
+      "command" : "vertx run Server.kt -cp ${base}/target/classes:.",
+      "client-command" : "vertx run Client.kt"
+    },
+
+    "java-pojo" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/webclient/send/jsonpojo",
+      "command" : "vertx run io.vertx.example.webclient.send.jsonpojo.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.webclient.send.jsonpojo.Client  -cp ${base}/target/classes:."
+    }
+  },
+
+  "post-check": "web-client-json-check.groovy",
+  "grace-text": "Succeeded in deploying verticle",
+  "client-execute-until" : "Got HTTP response with status"
+}

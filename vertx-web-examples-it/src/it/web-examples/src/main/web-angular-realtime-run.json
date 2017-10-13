@@ -1,32 +1,38 @@
 {
-  "name": "web-angular-realtime",
+    "name": "web-angular-realtime",
 
-  "tags": ["web", "angularjs", "realtime"],
+    "tags": ["web", "angularjs", "realtime"],
 
-  "executions": {
+    "libraries": [
+        "${dependencies}/slf4j-api",
+        "${dependencies}/vertx-auth-shiro",
+        "${dependencies}/shiro-core"
+    ],
 
-    "java" : {
-      "directory" : "${base}/src/main/java/io/vertx/example/web/angular_realtime",
-      "command" : "vertx run io.vertx.example.web.angular_realtime.Server -cp ${base}/target/classes:."
-    }
+    "executions": {
 
-//    "js" : {
-//      "directory" : "${base}/src/main/js/io/vertx/example/web/angular_realtime",
-//      "command" : "vertx run server.js -cp ${base}/target/classes:."
-//    },
-//
-//    "groovy": {
-//      "directory" : "${base}/src/main/groovy/io/vertx/example/web/angular_realtime",
-//      "command" : "vertx run server.groovy -cp ${base}/target/classes:."
-//    },
-//
-//    "ruby": {
-//      "directory" : "${base}/src/main/rb/io/vertx/example/web/angular_realtime",
-//      "command" : "vertx run server.rb -cp ${base}/target/classes:."
-//    }
+        "java": {
+            "directory": "${base}/src/main/java/io/vertx/example/web/angular_realtime",
+            "command": "vertx run io.vertx.example.web.angular_realtime.Server -cp ${base}/target/classes:."
+        }
 
-  },
+        //    "js" : {
+        //      "directory" : "${base}/src/main/js/io/vertx/example/web/angular_realtime",
+        //      "command" : "vertx run server.js -cp ${base}/target/classes:."
+        //    },
+        //
+        //    "groovy": {
+        //      "directory" : "${base}/src/main/groovy/io/vertx/example/web/angular_realtime",
+        //      "command" : "vertx run server.groovy -cp ${base}/target/classes:."
+        //    },
+        //
+        //    "ruby": {
+        //      "directory" : "${base}/src/main/ruby/io/vertx/example/web/angular_realtime",
+        //      "command" : "vertx run server.rb -cp ${base}/target/classes:."
+        //    }
 
-  "grace-text": "Succeeded in deploying verticle",
-  "client-check": "web-angular-realtime-check.groovy"
+    },
+
+    "grace-text": "Succeeded in deploying verticle",
+    "client-check": "web-angular-realtime-check.groovy"
 }

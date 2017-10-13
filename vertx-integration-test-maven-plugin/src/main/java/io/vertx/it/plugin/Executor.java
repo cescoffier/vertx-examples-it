@@ -45,10 +45,16 @@ public class Executor {
     boolean found = false;
     for (Map.Entry<String, File> entry : extra.entrySet()) {
       if (cmd.startsWith(entry.getKey() + " ")) {
-        cmd = cmd.replaceFirst(entry.getKey(), entry.getValue().getAbsolutePath());
-        command = new CommandLine(entry.getValue());
-        found = true;
-        break;
+        if (entry.getKey().startsWith("java")) {
+          // Do nothing, fallback to not found.
+        } else {
+          System.out.println("Substituting command name " + entry.getKey() + " to " + entry.getValue()
+              .getAbsolutePath());
+          cmd = cmd.replaceFirst(entry.getKey(), entry.getValue().getAbsolutePath());
+          command = new CommandLine(entry.getValue());
+          found = true;
+          break;
+        }
       }
     }
 

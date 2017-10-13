@@ -21,8 +21,13 @@
     },
 
     "ruby": {
-      "directory" : "${base}/src/main/rb/io/vertx/example/core/verticle/worker",
+      "directory" : "${base}/src/main/ruby/io/vertx/example/core/verticle/worker",
       "command" : "vertx run main_verticle.rb -cp ${base}/target/classes:."
+    },
+
+    "kotlin": {
+      "directory" : "${base}/src/main/kotlin/io/vertx/example/core/verticle/worker",
+      "command" : "vertx run MainVerticle.kt -cp ${base}/target/classes:."
     }
   },
 

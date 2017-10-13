@@ -7,15 +7,14 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.3.0</version>
+    <version>3.5.0</version>
   </parent>
 
-  <artifactId>vertx-jgroups-examples-it</artifactId>
+  <artifactId>vertx-resteasy-examples-it</artifactId>
 
   <properties>
-    <example.dir>jgroups-examples</example.dir>
+    <example.dir>resteasy-examples</example.dir>
     <fastbuild>false</fastbuild>
-    <jar.version>3.3.0</jar.version>
   </properties>
 
   <build>
@@ -35,7 +34,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
@@ -71,7 +70,6 @@
               <additionalProperties>
                 <base>${project.build.directory}/it/${example.dir}</base>
                 <dependencies>${project.build.directory}/dependencies</dependencies>
-                <jar.version>${jar.version}</jar.version>
               </additionalProperties>
             </configuration>
           </execution>
@@ -132,6 +130,9 @@
                 <goal>clean</goal>
                 <goal>install</goal>
               </goals>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
               <skipInvocation>${fastbuild}</skipInvocation>
             </configuration>
           </execution>
@@ -151,6 +152,9 @@
                 <goal>org.apache.maven.plugins:maven-dependency-plugin:copy-dependencies</goal>
               </goals>
               <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
               <properties>
                 <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
               </properties>

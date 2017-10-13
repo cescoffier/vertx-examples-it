@@ -1,0 +1,30 @@
+{
+  "name": "circuit-breaker",
+
+  "tags": ["resilience", "circuit-breaker"],
+
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}/src/main/java/io/vertx/example/circuit/breaker",
+      "command" : "vertx run io.vertx.example.circuit.breaker.Server -cp ${base}/target/classes:.",
+      "client-command" : "vertx run io.vertx.example.circuit.breaker.Client  -cp ${base}/target/classes:."
+    },
+
+    "js" : {
+      "directory" : "${base}/src/main/js/io/vertx/example/circuit/breaker",
+      "command" : "vertx run server.js -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.js"
+    },
+
+    "groovy": {
+      "directory" : "${base}/src/main/groovy/io/vertx/example/circuit/breaker",
+      "command" : "vertx run server.groovy -cp ${base}/target/classes:.",
+      "client-command" : "vertx run client.groovy"
+    }
+  },
+
+  "post-check": "circuit-breaker-check.groovy",
+  "grace-text": "Succeeded in deploying verticle",
+  "client-execute-until" : "Result:"
+}

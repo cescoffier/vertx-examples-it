@@ -7,7 +7,8 @@
 
   "libraries": [
     "${dependencies}/subethasmtp",
-    "${dependencies}/mail"
+    "${dependencies}/mail",
+    "${dependencies}/slf4j-api"
   ],
 
   "executions": {
@@ -24,7 +25,7 @@
       "command": "vertx run mail_images.groovy -cp ${base}/target/classes:."
     },
     "ruby": {
-      "directory": "${base}/src/main/rb/io/vertx/example/mail",
+      "directory": "${base}/src/main/ruby/io/vertx/example/mail",
       "command": "vertx run mail_images.rb -cp ${base}/target/classes:."
     }
   },

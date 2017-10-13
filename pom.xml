@@ -6,35 +6,53 @@
 
   <groupId>io.vertx</groupId>
   <artifactId>integration-tests</artifactId>
-  <version>3.3.0</version>
+  <version>3.5.0</version>
 
   <packaging>pom</packaging>
 
   <properties>
-    <vertx.version>3.3.0</vertx.version>
-    <vertx.examples.branch>master</vertx.examples.branch>
+    <vertx.version>3.5.0</vertx.version>
+    <vertx.examples.branch>3.5.0-staging</vertx.examples.branch>
   </properties>
 
-  <modules>
-    <module>vertx-integration-test-maven-plugin</module>
-    <module>vertx-core-examples-it</module>
-    <module>vertx-web-examples-it</module>
-    <module>vertx-maven-examples-it</module>
-    <module>vertx-metrics-examples-it</module>
-    <module>vertx-redis-examples-it</module>
-    <module>vertx-service-proxy-examples-it</module>
-    <module>vertx-jdbc-examples-it</module>
-    <module>vertx-sync-examples-it</module>
-    <module>vertx-sync-aot-examples-it</module>
-    <module>vertx-mongo-examples-it</module>
-    <module>vertx-maven-service-factory-examples-it</module>
-    <module>vertx-mail-examples-it</module>
-    <module>vertx-heroku-examples-it</module>
-    <module>vertx-jgroups-examples-it</module>
-    <module>vertx-ignite-examples-it</module>
-    <module>vertx-spring-examples-it</module>
-  </modules>
+  <profiles>
+    <profile>
+      <id>it</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>vertx-integration-test-maven-plugin</module>
+        <module>vertx-core-examples-it</module>
+        <module>vertx-web-examples-it</module>
+        <module>vertx-maven-examples-it</module>
+        <module>vertx-metrics-examples-it</module>
+        <module>vertx-redis-examples-it</module>
+        <module>vertx-service-proxy-examples-it</module>
+        <module>vertx-jdbc-examples-it</module>
+        <module>vertx-sync-examples-it</module>
+        <module>vertx-sync-aot-examples-it</module>
+        <module>vertx-mongo-examples-it</module>
+        <module>vertx-maven-service-factory-examples-it</module>
+        <module>vertx-mail-examples-it</module>
+        <module>vertx-heroku-examples-it</module>
+        <module>vertx-ignite-examples-it</module>
+        <module>vertx-spring-examples-it</module>
+        <module>vertx-resteasy-examples-it</module>
+        <module>vertx-web-client-examples-it</module>
+        <module>vertx-circuit-breaker-examples-it</module>
+        <module>vertx-kafka-examples-it</module>
+        <module>vertx-grpc-examples-it</module>
+      </modules>
+    </profile>
 
+    <profile>
+      <id>prepare</id>
+      <modules>
+        <module>vertx-integration-test-maven-plugin</module>
+      </modules>
+    </profile>
+  </profiles>
   <dependencies>
     <dependency>
       <groupId>io.vertx</groupId>
@@ -55,7 +73,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.4.1</version>
+      <version>3.6.2</version>
     </dependency>
     <dependency>
       <artifactId>http-builder</artifactId>
@@ -114,21 +132,21 @@
   </build>
 
   <repositories>
-    <!--<repository>-->
-      <!--<id>oss.snapshots</id>-->
-      <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-      <!--<snapshots>-->
-        <!--<enabled>true</enabled>-->
-      <!--</snapshots>-->
-      <!--<releases>-->
-        <!--<enabled>false</enabled>-->
-      <!--</releases>-->
-    <!--</repository>-->
     <repository>
-      <id>oss.snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/iovertx-2939</url>
+      <id>staging</id>
+      <url>https://oss.sonatype.org/content/repositories/iovertx-3711</url>
       <snapshots>
         <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>oss.snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
       </snapshots>
       <releases>
         <enabled>true</enabled>

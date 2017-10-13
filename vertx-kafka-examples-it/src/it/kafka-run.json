@@ -1,0 +1,21 @@
+{
+  "name": "kafka",
+
+  "tags": ["web", "kafka", "metrics"],
+
+  "env": {
+    "VERTX_OPTS" : "-Dvertx.metrics.options.enabled=true"
+  },
+  
+  "executions": {
+
+    "java" : {
+      "directory" : "${base}",
+      "command" : "java -jar target/kafka-examples-${jar.version}-fat.jar"
+    }
+
+  },
+
+  "grace-text": "Succeeded in deploying verticle",
+  "client-check": "kafka-check.groovy"
+}

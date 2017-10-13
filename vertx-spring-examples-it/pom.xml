@@ -7,14 +7,14 @@
   <parent>
     <groupId>io.vertx</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>3.3.0</version>
+    <version>3.5.0</version>
   </parent>
 
   <artifactId>vertx-spring-examples-it</artifactId>
 
   <properties>
     <fastbuild>false</fastbuild>
-    <jar.version>3.3.0</jar.version>
+    <jar.version>${project.version}</jar.version>
   </properties>
 
   <build>
@@ -22,7 +22,7 @@
       <plugin>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-integration-test-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>clone-vertx-examples</id>
@@ -120,6 +120,9 @@
                 <goal>install</goal>
               </goals>
               <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
             </configuration>
           </execution>
 
@@ -137,6 +140,9 @@
                 <goal>package</goal>
               </goals>
               <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
             </configuration>
           </execution>
 
@@ -154,6 +160,50 @@
                 <goal>package</goal>
               </goals>
               <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>build-spring-verticle-factory-example</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <invokerTest>spring-examples/spring-verticle-factory</invokerTest>
+              <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+              </goals>
+              <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>build-springboot-clustering-example</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <invokerTest>spring-examples/springboot-clustering/springboot-clustering-hazelcast</invokerTest>
+              <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>spring-boot:repackage</goal>
+              </goals>
+              <skipInvocation>${fastbuild}</skipInvocation>
+              <profiles>
+                <profile>staging</profile>
+              </profiles>
             </configuration>
           </execution>
         </executions>

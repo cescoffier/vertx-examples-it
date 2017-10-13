@@ -7,7 +7,8 @@
 
   "libraries": [
     "${dependencies}/subethasmtp",
-    "${dependencies}/mail"
+    "${dependencies}/mail",
+    "${dependencies}/slf4j-api"
   ],
 
   "executions": {
@@ -15,17 +16,9 @@
       "directory": "${base}/src/main/java/io/vertx/example/mail",
       "command": "vertx run io.vertx.example.mail.MailLogin -cp ${base}/target/classes:."
     },
-    "js": {
-      "directory": "${base}/src/main/js/io/vertx/example/mail",
-      "command": "vertx run mail_login.js -cp ${base}/target/classes:."
-    },
     "groovy": {
       "directory": "${base}/src/main/groovy/io/vertx/example/mail",
       "command": "vertx run mail_login.groovy -cp ${base}/target/classes:."
-    },
-    "ruby": {
-      "directory": "${base}/src/main/rb/io/vertx/example/mail",
-      "command": "vertx run mail_login.rb -cp ${base}/target/classes:."
     }
   },
   "grace-text": "Mail sent",

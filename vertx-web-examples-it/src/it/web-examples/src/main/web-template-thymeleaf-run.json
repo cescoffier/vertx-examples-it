@@ -6,7 +6,8 @@
   "libraries": [
     "${dependencies}/javassist",
     "${dependencies}/attoparser",
-    "${dependencies}/unbescape"
+    "${dependencies}/unbescape",
+    "${dependencies}/slf4j-api"
   ],
 
   "executions": {
@@ -27,7 +28,7 @@
 //    },
 //
 //    "ruby": {
-//      "directory" : "${base}/src/main/rb/io/vertx/example/web/templating/thymeleaf",
+//      "directory" : "${base}/src/main/ruby/io/vertx/example/web/templating/thymeleaf",
 //      "command" : "vertx run server.rb -cp ${base}/target/classes:."
 //    }
 

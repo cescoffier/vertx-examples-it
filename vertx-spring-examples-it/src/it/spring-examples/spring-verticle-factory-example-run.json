@@ -1,0 +1,16 @@
+{
+  "name": "spring-verticle-factory-example",
+
+  "tags": ["maven", "spring", "verticle-factory"],
+
+  "executions": {
+
+    "spring-server" : {
+      "directory" : "${base}/spring-examples/spring-verticle-factory",
+      "command" : "java -jar target/spring-verticle-factory-${jar.version}-fat.jar"
+    }
+  },
+
+  "grace-text": "GreetingVerticle started",
+  "client-check": "spring-verticle-factory-example-check.groovy"
+}
